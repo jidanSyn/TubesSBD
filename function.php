@@ -14,7 +14,7 @@
         return $eksekusi;
     }
 
-
+ 
     function readOneSumberAir($id){
         global $conn;
 
@@ -25,7 +25,7 @@
 
         $eksekusi = mysqli_query($conn, $query);
 
-        return $eksekusi;
+        return $eksekusi;   
     }
 
 

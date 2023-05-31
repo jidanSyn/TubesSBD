@@ -135,7 +135,7 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-5 col-12">
                             <div class="topics-detail-block bg-white shadow-lg">
-                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="topics-detail-block-image img-fluid">
+                                <img src="images/foto_sumber_air/<?=$detail_air['foto_sumber_air']?>" class="topics-detail-block-image img-fluid">
                             </div>
                         </div>
 
@@ -155,7 +155,7 @@ https://templatemo.com/tm-590-topic-listing
 
                             <p>Kondisi Sumber Air: <?=$detail_air['kondisi_sumber_air']?></p>
 
-                            <p>Suhu: <?=$detail_air['suhu(c)']?>&#8451;</p>
+                            <p>Suhu: <?=$detail_air['suhu']?>&#8451;</p>
 
                             <p>Warna: <?=$detail_air['warna']?></p>
 

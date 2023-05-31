@@ -1,3 +1,24 @@
+<?php
+    include('function.php');
+    $listSumberAir = readSumberAir();
+
+    if (isset($_GET['id_sumber_air'])) {
+      $id = ($_GET["id_sumber_air"]);
+      $result_air = readOneSumberAir($id);
+      $detail_air = mysqli_fetch_assoc($result_air);
+      $result_upaya = readUpayaSumberAir($id);
+      
+    
+    // echo '<pre>';
+    // print_r($detail_air);
+    // print_r($result_upaya);
+
+    // echo $detail_air['nama_sumber_air'];
+    
+    
+    }
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -99,11 +120,11 @@ https://templatemo.com/tm-590-topic-listing
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Homepage</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">Web Design</li>
+                                    <li class="breadcrumb-item active" aria-current="page"><?=$detail_air['nama_sumber_air']?></li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">Introduction to <br> Web Design 101</h2>
+                            <h2 class="text-white">Details of <br><?=$detail_air['nama_sumber_air']?></h2>
 
                             <div class="d-flex align-items-center mt-5">
                                 <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Read More</a>
@@ -128,15 +149,36 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-8 col-12 m-auto">
-                            <h3 class="mb-4">Introduction to Web Design</h3>
+                            <h3 class="mb-4"><?=$detail_air['nama_sumber_air']?></h3>
 
-                            <p>So how can you stand out, do something unique and interesting, build an online business, and get paid enough to change life. Please visit TemplateMo website to download free website templates.</p>
+                            <p><?=$detail_air['nama_sumber_air']?> berada di wilayah <?=$detail_air['nama_wilayah']?></p>
 
-                            <p><strong>There are so many ways to make money online</strong>. Below are several platforms you can use to find success. Keep in mind that there is no one path everyone can take. If that were the case, everyone would have a million dollars.</p>
+                            <p>Kondisi Sumber Air: <?=$detail_air['kondisi_sumber_air']?></p>
+
+                            <p>Suhu: <?=$detail_air['suhu(c)']?>&#8451;</p>
+
+                            <p>Warna: <?=$detail_air['warna']?></p>
+
+                            <p>pH: <?=$detail_air['pH']?></p>
+
+                            <p>Kelayakan untuk diminum: <?=$detail_air['layak_minum']?></p>
+
+                            <p>Upaya yang dapat dilakukan untuk melestarikan dan meningkatkan kualitas sumber air:</p>
+
+                            <ul>
+                                <?php
+                                    foreach($result_upaya as $upaya) {
+                                        echo '<li><p>'.$upaya["nama_upaya"].'</p></li>';
+                                    }
+                                ?>
+                                
+                            </ul>
+
+                            <!-- <p><strong>There are so many ways to make money online</strong>. Below are several platforms you can use to find success. Keep in mind that there is no one path everyone can take. If that were the case, everyone would have a million dollars.</p>
 
                             <blockquote>
                                 Freelancing your skills isn’t going to make you a millionaire overnight.
-                            </blockquote>
+                            </blockquote> -->
 
                             <div class="row my-4">
                                 <div class="col-lg-6 col-md-6 col-12">

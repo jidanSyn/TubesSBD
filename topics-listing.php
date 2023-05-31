@@ -1,6 +1,7 @@
 <?php
     include('function.php');
     $listSumberAir = readSumberAir();
+    
 ?>
 
 
@@ -148,7 +149,7 @@ https://templatemo.com/tm-590-topic-listing
                                             <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
                                             <p class="mb-0">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>
 
-                                            <a href="topics-detail.php" class="btn custom-btn mt-3 mt-lg-4">Detail</a>
+                                            <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>" class="btn custom-btn mt-3 mt-lg-4">Detail</a>
                                         </div>
 
                                     </div>

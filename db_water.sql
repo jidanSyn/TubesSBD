@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Bulan Mei 2023 pada 15.34
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Generation Time: May 31, 2023 at 04:10 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_sumber_air`
+-- Table structure for table `jenis_sumber_air`
 --
 
 CREATE TABLE `jenis_sumber_air` (
@@ -33,7 +33,7 @@ CREATE TABLE `jenis_sumber_air` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `jenis_sumber_air`
+-- Dumping data for table `jenis_sumber_air`
 --
 
 INSERT INTO `jenis_sumber_air` (`id_jenis_sumber_air`, `nama_jenis_sumber_air`) VALUES
@@ -46,17 +46,17 @@ INSERT INTO `jenis_sumber_air` (`id_jenis_sumber_air`, `nama_jenis_sumber_air`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_delete_sumber_air`
+-- Table structure for table `log_delete_sumber_air`
 --
 
 CREATE TABLE `log_delete_sumber_air` (
   `id_log_delete_sumber_air` int(11) NOT NULL,
   `id_sumber_air` int(11) NOT NULL,
   `nama_sumber_air` varchar(100) NOT NULL,
-  `kondisi_sumbeer_air` varchar(100) NOT NULL,
+  `kondisi_sumber_air` varchar(100) NOT NULL,
   `suhu` decimal(11,0) NOT NULL,
   `warna` varchar(100) NOT NULL,
-  `pH` decimal(11,0) NOT NULL,
+  `pH` decimal(11,1) NOT NULL,
   `layak_minum` varchar(100) NOT NULL,
   `id_jenis_sumber_air` int(11) NOT NULL,
   `id_wilayah` int(11) NOT NULL,
@@ -65,16 +65,45 @@ CREATE TABLE `log_delete_sumber_air` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `log_delete_sumber_air`
+-- Dumping data for table `log_delete_sumber_air`
 --
 
-INSERT INTO `log_delete_sumber_air` (`id_log_delete_sumber_air`, `id_sumber_air`, `nama_sumber_air`, `kondisi_sumbeer_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`, `tgl_delete`) VALUES
-(1, 11, 'Sungai Selamanya', 'Baik', '40', 'Bening', '6', 'Tidak', 5, 2, 'sungai_selamanya.jpg', '2023-05-31');
+INSERT INTO `log_delete_sumber_air` (`id_log_delete_sumber_air`, `id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`, `tgl_delete`) VALUES
+(1, 11, 'Sungai Selamanya', 'Baik', '40', 'Bening', '6.0', 'Tidak', 5, 2, 'sungai_selamanya.jpg', '2023-05-31');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sumber_air`
+-- Table structure for table `log_update_sumber_air`
+--
+
+CREATE TABLE `log_update_sumber_air` (
+  `id_log_update_sumber_air` int(11) NOT NULL,
+  `id_sumber_air` int(11) DEFAULT NULL,
+  `old_nama_sumber_air` varchar(100) DEFAULT NULL,
+  `old_kondisi_sumber_air` varchar(100) DEFAULT NULL,
+  `old_suhu` decimal(11,0) DEFAULT NULL,
+  `old_warna` varchar(100) DEFAULT NULL,
+  `old_pH` decimal(11,1) DEFAULT NULL,
+  `old_layak_minum` varchar(100) DEFAULT NULL,
+  `old_id_jenis_sumber_air` int(11) DEFAULT NULL,
+  `old_id_wilayah` int(11) DEFAULT NULL,
+  `old_foto_sumber_air` varchar(100) DEFAULT NULL,
+  `tgl_update` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log_update_sumber_air`
+--
+
+INSERT INTO `log_update_sumber_air` (`id_log_update_sumber_air`, `id_sumber_air`, `old_nama_sumber_air`, `old_kondisi_sumber_air`, `old_suhu`, `old_warna`, `old_pH`, `old_layak_minum`, `old_id_jenis_sumber_air`, `old_id_wilayah`, `old_foto_sumber_air`, `tgl_update`) VALUES
+(1, 1, 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '8.0', 'Tidak', 3, 3, 'foto_waduk_jatiluhur.jpg', '2023-05-31'),
+(2, 1, 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.5', 'Tidak', 3, 3, 'foto_waduk_jatiluhur.jpg', '2023-05-31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sumber_air`
 --
 
 CREATE TABLE `sumber_air` (
@@ -91,7 +120,7 @@ CREATE TABLE `sumber_air` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `sumber_air`
+-- Dumping data for table `sumber_air`
 --
 
 INSERT INTO `sumber_air` (`id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`) VALUES
@@ -107,7 +136,7 @@ INSERT INTO `sumber_air` (`id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_ai
 (10, 'Sungai Bengawan Solo', 'Rusak Parak', '29', 'Keruh', '7.8', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg');
 
 --
--- Trigger `sumber_air`
+-- Triggers `sumber_air`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_log_delete_sumber_air` BEFORE DELETE ON `sumber_air` FOR EACH ROW BEGIN
@@ -115,11 +144,17 @@ CREATE TRIGGER `tr_log_delete_sumber_air` BEFORE DELETE ON `sumber_air` FOR EACH
  END
 $$
 DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `tr_log_update_sumber_air` BEFORE UPDATE ON `sumber_air` FOR EACH ROW BEGIN
+INSERT INTO log_update_sumber_air VALUES('', OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sumber_air_upaya_peningkatan`
+-- Table structure for table `sumber_air_upaya_peningkatan`
 --
 
 CREATE TABLE `sumber_air_upaya_peningkatan` (
@@ -131,7 +166,7 @@ CREATE TABLE `sumber_air_upaya_peningkatan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `upaya_peningkatan_ketersediaan_air`
+-- Table structure for table `upaya_peningkatan_ketersediaan_air`
 --
 
 CREATE TABLE `upaya_peningkatan_ketersediaan_air` (
@@ -140,7 +175,7 @@ CREATE TABLE `upaya_peningkatan_ketersediaan_air` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `upaya_peningkatan_ketersediaan_air`
+-- Dumping data for table `upaya_peningkatan_ketersediaan_air`
 --
 
 INSERT INTO `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`, `nama_upaya`) VALUES
@@ -155,7 +190,7 @@ INSERT INTO `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `wilayah`
+-- Table structure for table `wilayah`
 --
 
 CREATE TABLE `wilayah` (
@@ -164,7 +199,7 @@ CREATE TABLE `wilayah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `wilayah`
+-- Dumping data for table `wilayah`
 --
 
 INSERT INTO `wilayah` (`id_wilayah`, `nama_wilayah`) VALUES
@@ -184,19 +219,25 @@ INSERT INTO `wilayah` (`id_wilayah`, `nama_wilayah`) VALUES
 --
 
 --
--- Indeks untuk tabel `jenis_sumber_air`
+-- Indexes for table `jenis_sumber_air`
 --
 ALTER TABLE `jenis_sumber_air`
   ADD PRIMARY KEY (`id_jenis_sumber_air`);
 
 --
--- Indeks untuk tabel `log_delete_sumber_air`
+-- Indexes for table `log_delete_sumber_air`
 --
 ALTER TABLE `log_delete_sumber_air`
   ADD PRIMARY KEY (`id_log_delete_sumber_air`);
 
 --
--- Indeks untuk tabel `sumber_air`
+-- Indexes for table `log_update_sumber_air`
+--
+ALTER TABLE `log_update_sumber_air`
+  ADD PRIMARY KEY (`id_log_update_sumber_air`);
+
+--
+-- Indexes for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
   ADD PRIMARY KEY (`id_sumber_air`),
@@ -204,7 +245,7 @@ ALTER TABLE `sumber_air`
   ADD KEY `wilayah` (`id_wilayah`);
 
 --
--- Indeks untuk tabel `sumber_air_upaya_peningkatan`
+-- Indexes for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
   ADD PRIMARY KEY (`id_sumber_air_upaya_peningkatan`),
@@ -212,70 +253,76 @@ ALTER TABLE `sumber_air_upaya_peningkatan`
   ADD KEY `id_upaya_peningkatan` (`id_upaya_peningkatan_ketersediaan_air`);
 
 --
--- Indeks untuk tabel `upaya_peningkatan_ketersediaan_air`
+-- Indexes for table `upaya_peningkatan_ketersediaan_air`
 --
 ALTER TABLE `upaya_peningkatan_ketersediaan_air`
   ADD PRIMARY KEY (`id_upaya_ketersediaan_air`);
 
 --
--- Indeks untuk tabel `wilayah`
+-- Indexes for table `wilayah`
 --
 ALTER TABLE `wilayah`
   ADD PRIMARY KEY (`id_wilayah`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_sumber_air`
+-- AUTO_INCREMENT for table `jenis_sumber_air`
 --
 ALTER TABLE `jenis_sumber_air`
   MODIFY `id_jenis_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `log_delete_sumber_air`
+-- AUTO_INCREMENT for table `log_delete_sumber_air`
 --
 ALTER TABLE `log_delete_sumber_air`
   MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `sumber_air`
+-- AUTO_INCREMENT for table `log_update_sumber_air`
+--
+ALTER TABLE `log_update_sumber_air`
+  MODIFY `id_log_update_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
   MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `sumber_air_upaya_peningkatan`
+-- AUTO_INCREMENT for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
   MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `upaya_peningkatan_ketersediaan_air`
+-- AUTO_INCREMENT for table `upaya_peningkatan_ketersediaan_air`
 --
 ALTER TABLE `upaya_peningkatan_ketersediaan_air`
   MODIFY `id_upaya_ketersediaan_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `wilayah`
+-- AUTO_INCREMENT for table `wilayah`
 --
 ALTER TABLE `wilayah`
   MODIFY `id_wilayah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `sumber_air`
+-- Constraints for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
   ADD CONSTRAINT `sumber_air_ibfk_1` FOREIGN KEY (`id_jenis_sumber_air`) REFERENCES `jenis_sumber_air` (`id_jenis_sumber_air`),
   ADD CONSTRAINT `wilayah` FOREIGN KEY (`id_wilayah`) REFERENCES `wilayah` (`id_wilayah`);
 
 --
--- Ketidakleluasaan untuk tabel `sumber_air_upaya_peningkatan`
+-- Constraints for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
   ADD CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`),

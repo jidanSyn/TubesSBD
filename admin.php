@@ -2,21 +2,21 @@
     include('function.php');
     $listSumberAir = readSumberAir();
 
-    if (isset($_GET['id_sumber_air'])) {
-      $id = ($_GET["id_sumber_air"]);
-      $result_air = readOneSumberAir($id);
-      $detail_air = mysqli_fetch_assoc($result_air);
-      $result_upaya = readUpayaSumberAir($id);
+    // if (isset($_GET['id_sumber_air'])) {
+    //   $id = ($_GET["id_sumber_air"]);
+    //   $result_air = readOneSumberAir($id);
+    //   $detail_air = mysqli_fetch_assoc($result_air);
+    //   $result_upaya = readUpayaSumberAir($id);
       
     
-    // echo '<pre>';
-    // print_r($detail_air);
-    // print_r($result_upaya);
+    // // echo '<pre>';
+    // // print_r($detail_air);
+    // // print_r($result_upaya);
 
-    // echo $detail_air['nama_sumber_air'];
+    // // echo $detail_air['nama_sumber_air'];
     
     
-    }
+    // }
 ?>
 
 <!doctype html>
@@ -138,29 +138,47 @@ https://templatemo.com/tm-590-topic-listing
 
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
-                <h1>tabel wilayah</h1>
+                <h1>Tabel Sumber Air</h1>
                 <button type="button" class="btn btn-outline-primary">Tambah Data</button>
                 <table class="table caption-top">
-                    <caption>List of users</caption>
+                    <caption>List of sumber air</caption>
                     <thead>
                         <tr>
                         <th scope="col"></th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Kondisi</th>
+                        <th scope="col">Suhu</th>
+                        <th scope="col">Warna</th>
+                        <th scope="col">pH</th>
+                        <th scope="col">Wilayah</th>
+                        <th scope="col">Jenis</th>
+                        <th scope="col">Foto</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $cacah = 1;
+                            foreach($listSumberAir as $sumberAir) {
+                        ?>
                         <tr>
-                        <th scope="row">1</th>
-                        <td>Maraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak</td>
-                        <td>Oaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatto</td>
-                        <td>@mdaaaaaaaaaaaao</td>
+                        <th scope="row"><?=$cacah?></th>
+                        <td><?=$sumberAir['nama_sumber_air']?></td>
+                        <td><?=$sumberAir['kondisi_sumber_air']?></td>
+                        <td><?=$sumberAir['suhu']?></td>
+                        <td><?=$sumberAir['warna']?></td>
+                        <td><?=$sumberAir['layak_minum']?></td>
+                        <td><?=$sumberAir['nama_wilayah']?></td>
+                        <td><?=$sumberAir['nama_jenis_sumber_air']?></td>
+                        <td><a href="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>">See image</a></td>
                         <td><button type="button" class="btn btn-outline-success">Update</button> 
                         <button type="button" class="btn btn-outline-danger">Delete</button>
                         </td>
                         </tr>
+                        <?php
+                                $cacah++;
+                            }
+                        ?>
                     </tbody>
                     </table>
                 </div>

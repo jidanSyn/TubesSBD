@@ -128,8 +128,90 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-12 col-12 text-center">
                             <h3 class="mb-4">List Sumber Air</h3>
+                            <!-- Button trigger modal
+                            
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Filter
+                            </button> -->
                         </div>
 
+                
+
+                            <!-- Modal -->
+                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filters</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            Sort by :  -->
+                                        <!-- Example single danger button -->
+                                        <!-- <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Field
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                        </div>
+                                        in :
+                                        <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Order
+                                        </button>
+                                        
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><option value="">test</option></a></li>
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                        </div>
+
+                                        
+
+                                        
+                                        
+                                        <br>
+                                        <br>
+                                        <div class="input-group">
+                                        <span class="input-group-text">Range Suhu dari</span>
+                                        <input type="text" aria-label="First name" class="form-control" >
+                                        <span class="input-group-text">sampai</span>
+                                        <input type="text" aria-label="Last name" class="form-control" >
+                                        </div>
+
+                                        <br>
+                                        
+                                        <div class="input-group">
+                                        <span class="input-group-text">Range pH dari</span>
+                                        <input type="text" aria-label="First name" class="form-control" >
+                                        <span class="input-group-text">sampai</span>
+                                        <input type="text" aria-label="Last name" class="form-control" >
+                                        </div> -->
+                                        <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero dolores cumque corrupti, ullam at iusto officiis laborum sit minus nobis debitis quis harum dolorum, obcaecati doloremque modi nisi. Ipsa! -->
+
+                                        <!-- </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+
+                        
                         <div class="col-lg-8 col-12 mt-3 mx-auto">
                         <?php
                             $cacah = 0;

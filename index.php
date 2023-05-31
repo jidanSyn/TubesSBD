@@ -36,9 +36,9 @@ https://templatemo.com/tm-590-topic-listing
 
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Hydro Culus</span>
+                        <span>HydroCulus</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -75,9 +75,9 @@ https://templatemo.com/tm-590-topic-listing
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+                                    <li><a class="dropdown-item" href="topics-listing.php">Topics Listing</a></li>
 
-                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
+                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -95,9 +95,9 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="text-white text-center">Data Air Layak</h1>
+                            <h1 class="text-white text-center">Data Air di Indonesia</h1>
 
-                            <h6 class="text-center">daerah bandung</h6>
+                            <!-- <h6 class="text-center">daerah bandung</h6> -->
 
                             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                                 <div class="input-group input-group-lg">
@@ -123,7 +123,7 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block bg-white shadow-lg">
-                                <a href="topics-detail.html">
+                                <a href="topics-detail.php">
                                     <div class="d-flex">
                                         <div>
                                             <h5 class="mb-2">Web Design</h5>
@@ -150,7 +150,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                             <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
 
-                                            <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                            <a href="topics-detail.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-finance rounded-pill ms-auto">25</span>
@@ -232,7 +232,7 @@ https://templatemo.com/tm-590-topic-listing
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Web Design</h5>
@@ -250,7 +250,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Graphic</h5>
@@ -268,7 +268,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Logo Design</h5>
@@ -290,7 +290,7 @@ https://templatemo.com/tm-590-topic-listing
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.html">
+                                                    <a href="topics-detail.php">
                                                         <div class="d-flex">
                                                             <div>
                                                                 <h5 class="mb-2">Advertising</h5>
@@ -308,7 +308,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.html">
+                                                    <a href="topics-detail.php">
                                                         <div class="d-flex">
                                                             <div>
                                                                 <h5 class="mb-2">Video Content</h5>
@@ -326,7 +326,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                             <div class="col-lg-4 col-md-6 col-12">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.html">
+                                                    <a href="topics-detail.php">
                                                         <div class="d-flex">
                                                             <div>
                                                                 <h5 class="mb-2">Viral Tweet</h5>
@@ -347,7 +347,7 @@ https://templatemo.com/tm-590-topic-listing
                                 <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Investment</h5>
@@ -374,7 +374,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                                             <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis</p>
 
-                                                            <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                                            <a href="topics-detail.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                                         </div>
 
                                                         <span class="badge bg-finance rounded-pill ms-auto">25</span>
@@ -411,7 +411,7 @@ https://templatemo.com/tm-590-topic-listing
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Composing Song</h5>
@@ -429,7 +429,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Online Music</h5>
@@ -447,7 +447,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Podcast</h5>
@@ -469,7 +469,7 @@ https://templatemo.com/tm-590-topic-listing
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Graduation</h5>
@@ -487,7 +487,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
+                                                <a href="topics-detail.php">
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2">Educator</h5>
@@ -707,7 +707,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mb-4 pb-2">
-                        <a class="navbar-brand mb-2" href="index.html">
+                        <a class="navbar-brand mb-2" href="index.php">
                             <i class="bi-back"></i>
                             <span>Topic</span>
                         </a>

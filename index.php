@@ -126,9 +126,9 @@ https://templatemo.com/tm-590-topic-listing
                                 <a href="topics-detail.php">
                                     <div class="d-flex">
                                         <div>
-                                            <h5 class="mb-2">Web Design</h5>
+                                            <h5 class="mb-2">HydroCulus?</h5>
 
-                                            <p class="mb-0">When you search for free CSS templates, you will notice that TemplateMo is one of the best websites.</p>
+                                            <p class="mb-0">Kami adalah website yang berfokus pada pencarian sumber air di Indonesia.</p>
                                         </div>
 
                                         <span class="badge bg-design rounded-pill ms-auto">14</span>
@@ -146,9 +146,9 @@ https://templatemo.com/tm-590-topic-listing
 
                                     <div class="custom-block-overlay-text d-flex">
                                         <div>
-                                            <h5 class="text-white mb-2">Finance</h5>
+                                            <h5 class="text-white mb-2">Bisa ngapain aja?</h5>
 
-                                            <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
+                                            <p class="text-white">Kalian bisa mencari daerah yang memiliki sumber air dan juga karakteristiknya. Mengetahui kondisinya? Bisa. Suhunya? Bisa dong. Warna dan pH-nya? Tentu saja bisa. Kalian juga bisa mencari hal lainnya yang berkaitan dengan sumber air di Indonesia :)</p>
 
                                             <a href="topics-detail.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                         </div>

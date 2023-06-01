@@ -31,7 +31,7 @@
     
     function readUpayaSumberAir($find){
         global $conn;
-        $query = "SELECT sumber_air_upaya_peningkatan.id_sumber_air_upaya_peningkatan, sumber_air_upaya_peningkatan.id_upaya_peningkatan_ketersediaan_air
+        $query = "SELECT *
         FROM sumber_air_upaya_peningkatan 
         JOIN upaya_peningkatan_ketersediaan_air ON sumber_air_upaya_peningkatan.id_upaya_peningkatan_ketersediaan_air = upaya_peningkatan_ketersediaan_air.id_upaya_ketersediaan_air 
         WHERE sumber_air_upaya_peningkatan.id_sumber_air =" . $find;
@@ -190,6 +190,25 @@ function updateWater($data, $file, $listUpaya)
     }
     
     //mengembalikan nilai sukses
+    return $isSucceed;
+}
+
+function deleteWater($id){
+    global $conn;
+
+    $sumberUpaya = readUpayaSumberAir($id);
+    while ($listUpaya = mysqli_fetch_assoc($sumberUpaya)) {
+        $query = "DELETE FROM sumber_air_upaya_peningkatan WHERE id_sumber_air_upaya_peningkatan = ".$listUpaya['id_sumber_air_upaya_peningkatan'];
+        $result = mysqli_query($conn, $query);
+    }
+    $query = "DELETE FROM sumber_air WHERE id_sumber_air = $id";
+    $result = mysqli_query($conn, $query);
+
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+
+    // mengembalikan nilai sukses
     return $isSucceed;
 }
 

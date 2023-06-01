@@ -244,6 +244,74 @@ function register($data) {
     return mysqli_affected_rows($conn);
 }
  
-    
+function readSumberAirKondisi(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air
+    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+    WHERE kondisi_sumber_air = 'Baik'
+    ORDER BY 'nama_sumber_air' ASC";
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function readSumberAirSuhu(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air
+    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+    WHERE suhu >= 10 && suhu <= 25
+    ORDER BY 'nama_sumber_air' ASC";
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function readSumberAirWarna(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air
+    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+    WHERE warna = 'Bening'
+    ORDER BY 'nama_sumber_air' ASC";
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function readSumberAirpH(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air
+    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+    WHERE pH >= 7 && ph <= 8
+    ORDER BY 'nama_sumber_air' ASC";
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function readSumberAirLayakMinum(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air
+    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+    WHERE layak_minum = 'Layak'
+    ORDER BY 'nama_sumber_air' ASC";
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
 
 ?>

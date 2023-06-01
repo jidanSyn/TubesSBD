@@ -139,7 +139,7 @@ https://templatemo.com/tm-590-topic-listing
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
                 <h1>Tabel Sumber Air</h1>
-                <button type="button" class="btn btn-outline-primary">Tambah Data</button>
+                <a type="button" class="btn btn-outline-primary" href="addWater.php">Tambah Data</a>
                 <table class="table caption-top">
                     <caption>List of sumber air</caption>
                     <thead>
@@ -171,8 +171,8 @@ https://templatemo.com/tm-590-topic-listing
                         <td><?=$sumberAir['nama_wilayah']?></td>
                         <td><?=$sumberAir['nama_jenis_sumber_air']?></td>
                         <td><a href="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>">See image</a></td>
-                        <td><button type="button" class="btn btn-outline-success">Update</button> 
-                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                        <td><a type="button" class="btn btn-outline-success" href="updateWater.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">Update</a> 
+                        <a type="button" class="btn btn-outline-danger" href="deleteWater.php?id=<?=$sumberAir['id_sumber_air']?>">Delete</a>
                         </td>
                         </tr>
                         <?php

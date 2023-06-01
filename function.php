@@ -77,12 +77,10 @@ function updateWater($data, $file, $listUpaya)
     $kelayakan = $data['layak_minum'];
     $foto = $file['image']['name'];
 
-    //$sumberUpaya = readUpayaSumberAir($id);
+    $sumberUpaya = readUpayaSumberAir($id);
 
     
     
-
-
 
     if ($foto != "") {
 

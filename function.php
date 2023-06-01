@@ -212,6 +212,37 @@ function deleteWater($id){
     return $isSucceed;
 }
 
+function register($data) {
+    global $conn;
+
+    $username = strtolower(stripslashes($data["username"]));
+
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $confirm = mysqli_real_escape_string($conn, $data["confirm"]);
+
+    $result = mysqli_query($conn, "SELECT username FROM admins WHERE username = '$username'");
+
+    if(mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('Username is taken!');
+            </script>";
+        return false;
+    }
+
+    if($password !== $confirm) {
+        echo     "<script>
+                    alert('Password and Confirmation does not match');
+                </script>";
+        return false;
+    }
+
+    $password = password_hash($password, PASSWORD_ARGON2I);
+
+    // var_dump($password); die; 
+    $query = "INSERT INTO admins VALUES('', '$username', '$password')";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
  
     
 

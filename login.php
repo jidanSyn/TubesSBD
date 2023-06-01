@@ -1,7 +1,61 @@
+<?php
+	session_start();
+	include('function.php');
+	$error = false;
+
+	if(isset($_COOKIE["id"]) && isset($_COOKIE["key"])) {
+		$id = $_COOKIE['id'];
+		$key = $_COOKIE['key'];
+
+		$result = mysqli_query($conn, "SELECT username from admins where id_admin = $id");
+		$row = mysqli_fetch_assoc($result);
+
+		if( $key === hash('sha256', $row['username'])) {
+			$_SESSION['login'] = true;
+		}
+	}
+	
+    if(isset($_SESSION["login"])) {
+        header("Location: admin.php");
+    }
+
+	if(isset($_POST["login"])) {
+		$username = $_POST["username"];
+
+		$password = $_POST["password"];
+
+		$result = mysqli_query($conn, "SELECT * FROM admins where username = '$username'");
+
+		if(mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+			if(password_verify($password, $row["password"])) {
+				// set session
+				$_SESSION["login"] = true;
+
+				if(isset($_POST['remember'])) {
+					//setcookie('login', 'true', time()+60);
+					setcookie('id', $row['id_admin'], time()+60);
+					setcookie('key', hash('sha256', $row['username']), time()+60);
+				}
+				header("Location: admin.php");
+				
+				exit;
+			}
+		}
+		$error = true;
+	} 
+
+	echo 	"<script>
+				console.log('$error');
+			</script>";
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login 04</title>
+  	<title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -13,11 +67,20 @@
 
 	</head>
 	<body>
+		<?php if($error) {
+			echo 	"<script>
+						alert('Incorrect username or password!')
+					</script>";
+			
+		}
+			
+		?>
+			
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login #04</h2>
+					<h2 class="heading-section">Login</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -37,22 +100,22 @@
 									</p>
 								</div>
 			      	</div>
-							<form action="#" class="signin-form">
+							<form action="" class="signin-form" method="post">
 			      		<div class="form-group mb-3">
-			      			<label class="label" for="name">Username</label>
-			      			<input type="text" class="form-control" placeholder="Username" required>
+			      			<label class="label" for="username">Username</label>
+			      			<input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Password</label>
-		              <input type="password" class="form-control" placeholder="Password" required>
+		              <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 		            </div>
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+		            	<button type="submit" name="login" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
 		            </div>
 		            <div class="form-group d-md-flex">
 		            	<div class="w-50 text-left">
-			            	<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-									  <input type="checkbox" checked>
+			            	<label for="remember" class="checkbox-wrap checkbox-primary mb-0">Remember Me
+									  <input type="checkbox" name="remember" id="remember">
 									  <span class="checkmark"></span>
 										</label>
 									</div>

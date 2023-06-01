@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 12:33 PM
+-- Generation Time: Jun 01, 2023 at 05:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_water`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id_admin` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id_admin`, `username`, `password`) VALUES
+(1, 'jidan', '$argon2i$v=19$m=65536,t=4,p=1$NUdvL2ZkY3pOWERqazZKRQ$FVSZsWGPJwVm4yqQ3JZqWMS5HGAazS2GXpR/Q0laLwA');
 
 -- --------------------------------------------------------
 
@@ -63,6 +82,13 @@ CREATE TABLE `log_delete_sumber_air` (
   `foto_sumber_air` varchar(100) NOT NULL,
   `tgl_delete` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log_delete_sumber_air`
+--
+
+INSERT INTO `log_delete_sumber_air` (`id_log_delete_sumber_air`, `id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`, `tgl_delete`) VALUES
+(4, 15, 'test123', 'Baik', '25', 'Keruh', '8.0', 'Layak', 1, 2, 'default.png', '2023-06-01');
 
 -- --------------------------------------------------------
 
@@ -241,6 +267,12 @@ INSERT INTO `wilayah` (`id_wilayah`, `nama_wilayah`) VALUES
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
 -- Indexes for table `jenis_sumber_air`
 --
 ALTER TABLE `jenis_sumber_air`
@@ -291,6 +323,12 @@ ALTER TABLE `wilayah`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `jenis_sumber_air`
 --
 ALTER TABLE `jenis_sumber_air`
@@ -300,7 +338,7 @@ ALTER TABLE `jenis_sumber_air`
 -- AUTO_INCREMENT for table `log_delete_sumber_air`
 --
 ALTER TABLE `log_delete_sumber_air`
-  MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `log_update_sumber_air`
@@ -312,13 +350,13 @@ ALTER TABLE `log_update_sumber_air`
 -- AUTO_INCREMENT for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
-  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
-  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `upaya_peningkatan_ketersediaan_air`

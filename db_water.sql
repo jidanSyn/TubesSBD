@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 09:47 AM
+-- Generation Time: Jun 01, 2023 at 12:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -64,13 +64,6 @@ CREATE TABLE `log_delete_sumber_air` (
   `tgl_delete` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `log_delete_sumber_air`
---
-
-INSERT INTO `log_delete_sumber_air` (`id_log_delete_sumber_air`, `id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`, `tgl_delete`) VALUES
-(1, 11, 'Sungai Selamanya', 'Baik', '40', 'Bening', '6.0', 'Tidak', 5, 2, 'sungai_selamanya.jpg', '2023-05-31');
-
 -- --------------------------------------------------------
 
 --
@@ -91,14 +84,6 @@ CREATE TABLE `log_update_sumber_air` (
   `old_foto_sumber_air` varchar(100) DEFAULT NULL,
   `tgl_update` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `log_update_sumber_air`
---
-
-INSERT INTO `log_update_sumber_air` (`id_log_update_sumber_air`, `id_sumber_air`, `old_nama_sumber_air`, `old_kondisi_sumber_air`, `old_suhu`, `old_warna`, `old_pH`, `old_layak_minum`, `old_id_jenis_sumber_air`, `old_id_wilayah`, `old_foto_sumber_air`, `tgl_update`) VALUES
-(1, 1, 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '8.0', 'Tidak', 3, 3, 'foto_waduk_jatiluhur.jpg', '2023-05-31'),
-(2, 1, 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.5', 'Tidak', 3, 3, 'foto_waduk_jatiluhur.jpg', '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -133,22 +118,21 @@ INSERT INTO `sumber_air` (`id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_ai
 (7, 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', 2, 6, 'foto_sumur_abadi_semarang.jpg'),
 (8, 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', 4, 8, 'foto_danau_cermin_lamaru.jpg'),
 (9, 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', 4, 9, 'foto_danau_batur_bali.jpg'),
-(10, 'Sungai Bengawan Solo', 'Rusak Parak', '29', 'Keruh', '7.8', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg'),
-(12, 'Test', 'Rusak Sedang', '29', 'Bening', '7.7', 'Layak', 3, 2, 'default.png');
+(10, 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg');
 
 --
 -- Triggers `sumber_air`
 --
 DELIMITER $$
 CREATE TRIGGER `tr_log_delete_sumber_air` BEFORE DELETE ON `sumber_air` FOR EACH ROW BEGIN
- 		INSERT INTO log_delete_sumber_air VALUES('', OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
+ 		INSERT INTO log_delete_sumber_air (id_sumber_air, nama_sumber_air, kondisi_sumber_air, suhu, warna, pH, layak_minum, id_jenis_sumber_air, id_wilayah, foto_sumber_air, tgl_delete) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
  END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `tr_log_update_sumber_air` BEFORE UPDATE ON `sumber_air` FOR EACH ROW BEGIN
-INSERT INTO log_update_sumber_air VALUES('', OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
-END
+ 		INSERT INTO log_update_sumber_air (id_sumber_air,old_nama_sumber_air,old_kondisi_sumber_air,old_suhu,old_warna,old_pH,old_layak_minum,old_id_jenis_sumber_air,old_id_wilayah,old_foto_sumber_air, tgl_update) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
+ END
 $$
 DELIMITER ;
 
@@ -197,16 +181,9 @@ INSERT INTO `sumber_air_upaya_peningkatan` (`id_sumber_air_upaya_peningkatan`, `
 (26, 9, 2),
 (27, 9, 3),
 (28, 9, 4),
-(29, 10, 2),
-(30, 10, 3),
-(31, 10, 4),
-(32, 12, 1),
-(33, 12, 2),
-(34, 12, 3),
-(35, 12, 4),
-(36, 12, 5),
-(37, 12, 6),
-(38, 12, 7);
+(45, 10, 2),
+(46, 10, 3),
+(47, 10, 4);
 
 -- --------------------------------------------------------
 
@@ -323,25 +300,25 @@ ALTER TABLE `jenis_sumber_air`
 -- AUTO_INCREMENT for table `log_delete_sumber_air`
 --
 ALTER TABLE `log_delete_sumber_air`
-  MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `log_update_sumber_air`
 --
 ALTER TABLE `log_update_sumber_air`
-  MODIFY `id_log_update_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_log_update_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
-  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
-  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `upaya_peningkatan_ketersediaan_air`
@@ -370,8 +347,8 @@ ALTER TABLE `sumber_air`
 -- Constraints for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
-  ADD CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`),
-  ADD CONSTRAINT `id_upaya_peningkatan` FOREIGN KEY (`id_upaya_peningkatan_ketersediaan_air`) REFERENCES `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`);
+  ADD CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`) ON DELETE CASCADE,
+  ADD CONSTRAINT `id_upaya_peningkatan` FOREIGN KEY (`id_upaya_peningkatan_ketersediaan_air`) REFERENCES `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

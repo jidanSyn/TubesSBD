@@ -1,3 +1,12 @@
+<?php
+    include('function.php');
+    $listSumberAirKondisi = readSumberAirKondisi();
+    $listSumberAirSuhu = readSumberAirSuhu();
+    $listSumberAirWarna = readSumberAirWarna();
+    $listSumberAirpH = readSumberAirpH();
+    $listSumberAirLayakMinum = readSumberAirLayakMinum();
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -179,23 +188,23 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Konidisi</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
+                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Suhu</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
+                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Warna</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
+                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">pH</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
+                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Layak Minum</button>
                             </li>
                         </ul>
                     </div>
@@ -208,14 +217,18 @@ https://templatemo.com/tm-590-topic-listing
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
                                     <div class="row">
+                                    <?php
+                                        foreach($listSumberAirKondisi as $sumberAir) 
+                                        {
+                                    ?>
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
+                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Web Design</h5>
+                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
 
-                                                            <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
+                                                            <p class="mb-0"><?=$sumberAir['kondisi_sumber_air']?></p>
                                                         </div>
 
                                                         <span class="badge bg-design rounded-pill ms-auto">14</span>
@@ -225,8 +238,10 @@ https://templatemo.com/tm-590-topic-listing
                                                 </a>
                                             </div>
                                         </div>
-
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                    <?php
+                                        }
+                                    ?>
+                                        <!-- <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
                                                 <a href="topics-detail.php">
                                                     <div class="d-flex">
@@ -242,16 +257,16 @@ https://templatemo.com/tm-590-topic-listing
                                                     <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div>-->
 
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
+                                                <a href="topics-listing.php">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Logo Design</h5>
+                                                            <h5 class="mb-2">Selengkapnya</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
                                                         </div>
 
                                                         <span class="badge bg-design rounded-pill ms-auto">100</span>
@@ -262,9 +277,54 @@ https://templatemo.com/tm-590-topic-listing
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div> 
                                 <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
+                                    <div class="col-12 text-center">
+                                        <h4 class="mb-4">Suhu normal air yang baik antara 10°C - 25°C</h4>
+                                    </div>
+                                    <div class="row">
+                                    <?php
+                                        foreach($listSumberAirSuhu as $sumberAir) 
+                                        {
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+
+                                                            <p class="mb-0"><?=$sumberAir['suhu']?>°C</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-listing.php">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Selengkapnya</h5>
+
+                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    </div>
+
+                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                <!-- <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                                 <div class="custom-block bg-white shadow-lg">
@@ -318,12 +378,54 @@ https://templatemo.com/tm-590-topic-listing
                                                         <img src="images/topics/undraw_viral_tweet_gndb.png" class="custom-block-image img-fluid" alt="">
                                                     </a>
                                                 </div>
+                                            </div>-->
+                                    </div> 
+                                </div>
+
+                                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   
+                                    <div class="row">
+                                    <?php
+                                        foreach($listSumberAirWarna as $sumberAir) 
+                                        {
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+
+                                                            <p class="mb-0"><?=$sumberAir['warna']?></p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
                                             </div>
                                         </div>
-                                  </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-listing.php">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Selengkapnya</h5>
 
-                                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    </div>
+
+                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
                                                 <a href="topics-detail.php">
                                                     <div class="d-flex">
@@ -381,13 +483,54 @@ https://templatemo.com/tm-590-topic-listing
                                                     <div class="section-overlay"></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
                                 <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                    <?php
+                                        foreach($listSumberAirpH as $sumberAir) 
+                                        {
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+
+                                                            <p class="mb-0"><?=$sumberAir['pH']?></p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-listing.php">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Selengkapnya</h5>
+
+                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    </div>
+
+                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
                                                 <a href="topics-detail.php">
                                                     <div class="d-flex">
@@ -439,13 +582,54 @@ https://templatemo.com/tm-590-topic-listing
                                                     <img src="images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
                                 <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
+                                    <?php
+                                        foreach($listSumberAirLayakMinum as $sumberAir) 
+                                        {
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+
+                                                            <p class="mb-0"><?=$sumberAir['layak_minum']?> Minum</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-listing.php">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Selengkapnya</h5>
+
+                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    </div>
+
+                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
                                                 <a href="topics-detail.php">
                                                     <div class="d-flex">
@@ -480,7 +664,7 @@ https://templatemo.com/tm-590-topic-listing
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 

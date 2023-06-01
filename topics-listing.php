@@ -108,17 +108,17 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-12 col-12 text-center">
                             <h3 class="mb-4">Sumber Air</h3>
-                            <!-- Button trigger modal
+                            <!-- Button trigger modal -->
                             
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Filter
-                            </button> -->
+                            </button>
                         </div>
 
                 
 
                             <!-- Modal -->
-                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header">
@@ -127,22 +127,52 @@ https://templatemo.com/tm-590-topic-listing
                                     </div>
                                     <div class="modal-body">
                                         <form action="" method="post">
-                                            Sort by :  -->
-                                        <!-- Example single danger button -->
-                                        <!-- <div class="btn-group">
-                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Field
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                            <!-- Example single danger button -->
+                                            
+                                            <!-- <div class="btn-group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Field
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                                </ul>
+                                            </div> -->
+                                        <div class="row">
+                                            
+                                            <div class="col-sm-3" style="display: inline-block">Sort by : </div>
+                                            
+                                            <div class="col-sm-3" >
+                                            <div style="display: inline-block">
+                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        in :
-                                        <div class="btn-group">
+                                        <div class="col-sm-3" style="display: inline-block">Order by : </div>
+                                        <div class="col-sm-3" >
+                                            <div style="display: inline-block">
+                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        </div>
+                            
+                                        
+                                            
+                                    
+                                        <!-- <div class="btn-group">
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                             Order
                                         </button>
@@ -155,7 +185,7 @@ https://templatemo.com/tm-590-topic-listing
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="#">Separated link</a></li>
                                         </ul>
-                                        </div>
+                                        </div> -->
 
                                         
 
@@ -177,18 +207,18 @@ https://templatemo.com/tm-590-topic-listing
                                         <input type="text" aria-label="First name" class="form-control" >
                                         <span class="input-group-text">sampai</span>
                                         <input type="text" aria-label="Last name" class="form-control" >
-                                        </div> -->
-                                        <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero dolores cumque corrupti, ullam at iusto officiis laborum sit minus nobis debitis quis harum dolorum, obcaecati doloremque modi nisi. Ipsa! -->
+                                        </div> 
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vero dolores cumque corrupti, ullam at iusto officiis laborum sit minus nobis debitis quis harum dolorum, obcaecati doloremque modi nisi. Ipsa!
 
-                                        <!-- </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary" name="submit-filter">Save changes</button>
                                     </div>
+                                </form>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
 
                         

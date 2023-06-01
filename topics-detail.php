@@ -55,11 +55,11 @@ https://templatemo.com/tm-590-topic-listing
 
         <main>
 
-            <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>HydroCulus</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -73,38 +73,16 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="index.php">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_2">Browse Topics</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_3">How it works</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_4">FAQs</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_5">Contact</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.php">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
-                                </ul>
+                                <a class="nav-link active" href="topics-listing.php" >List Sumber Air</a>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
-                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <a href="login.php" class="navbar-icon bi-person smoothscroll"></a>
                         </div>
                     </div>
                 </div>
@@ -163,6 +141,8 @@ https://templatemo.com/tm-590-topic-listing
 
                             <p>Kelayakan untuk diminum: <?=$detail_air['layak_minum']?></p>
 
+                            <br>
+
                             <p>Upaya yang dapat dilakukan untuk melestarikan dan meningkatkan kualitas sumber air:</p>
 
                             <ul>
@@ -180,7 +160,7 @@ https://templatemo.com/tm-590-topic-listing
                                 Freelancing your skills isn’t going to make you a millionaire overnight.
                             </blockquote> -->
 
-                            <div class="row my-4">
+                            <!-- <div class="row my-4">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <img src="images/businesswoman-using-tablet-analysis.jpg" class="topics-detail-block-image img-fluid">
                                 </div>
@@ -191,14 +171,14 @@ https://templatemo.com/tm-590-topic-listing
                             </div>
 
                             <p>Most people start with freelancing skills they already have as a side hustle to build up income. This extra cash can be used for a vacation, to boost up savings, investing, build business.</p>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
             </section>
 
 
-            <section class="section-padding section-bg">
+            <!-- <section class="section-padding section-bg">
                 <div class="container">
                     <div class="row justify-content-center">
 
@@ -220,7 +200,7 @@ https://templatemo.com/tm-590-topic-listing
 
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
 		
         <footer class="site-footer section-padding">

@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>HydroCulus</title>
+        <title>Topic Listing Page</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +18,9 @@
                         
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <link href="/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="css/templatemo-topic-listing.css" rel="stylesheet">      
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">
 <!--
 
 TemplateMo 590 topic listing
@@ -30,7 +30,7 @@ https://templatemo.com/tm-590-topic-listing
 -->
     </head>
     
-    <body id="top">
+    <body class="topics-listing-page" id="top">
 
         <main>
 
@@ -52,38 +52,16 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="index.php">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_3">How it works</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_4">FAQs</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_5">Contact</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.php">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
-                                </ul>
+                                <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
-                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <a href="login.php" class="navbar-icon bi-person smoothscroll"></a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +73,7 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="text-white text-center">Data Air di Indonesia</h1>
+                            <h1 class="text-white text-center">Sumber Air di Indonesia</h1>
 
                             <!-- <h6 class="text-center">daerah bandung</h6> -->
 
@@ -123,7 +101,7 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block bg-white shadow-lg">
-                                <a href="topics-detail.php">
+                                <a href="topics-listing.php">
                                     <div class="d-flex">
                                         <div>
                                             <h5 class="mb-2">HydroCulus?</h5>
@@ -150,7 +128,7 @@ https://templatemo.com/tm-590-topic-listing
 
                                             <p class="text-white">Kalian bisa mencari daerah yang memiliki sumber air dan juga karakteristiknya. Mengetahui kondisinya? Bisa. Suhunya? Bisa dong. Warna dan pH-nya? Tentu saja bisa. Kalian juga bisa mencari hal lainnya yang berkaitan dengan sumber air di Indonesia :)</p>
 
-                                            <a href="topics-detail.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                            <a href="topics-listing.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-finance rounded-pill ms-auto">25</span>

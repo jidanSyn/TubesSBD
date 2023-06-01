@@ -1,0 +1,50 @@
+<?php
+    include('function.php');
+    if(isset($_POST["register"])) {
+        if(register($_POST) > 0) {
+            echo "<script>
+                    alert('New Admin has been created');
+                    </script>";
+        } else {
+            echo mysqli_error($conn);
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Create Admin</h1>
+
+    <form action="" method="post">
+        <ul style="list-style: none;">
+                <li>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username">
+                </li>
+                <li>
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="password">
+                </li>
+                <li>
+                    <label for="confirm">Confirm Password: </label>
+                    <input type="password" name="confirm" id="confirm">
+                </li>
+                <li>
+                    <button type="submit" name="register">Register</button>
+                </li>
+        </ul>
+    </form>
+</body>
+</html>

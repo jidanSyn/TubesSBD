@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if(!isset($_SESSION["login"])) {
+        header("Location: login.php");
+    }
     include('function.php');
     $listSumberAir = readSumberAir();
 
@@ -215,6 +219,10 @@ https://templatemo.com/tm-590-topic-listing
 
                             <li class="site-footer-link-item">
                                 <a href="#" class="site-footer-link">Contact</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="logout.php" class="site-footer-link">Log Out</a>
                             </li>
                         </ul>
                     </div>

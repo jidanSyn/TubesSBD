@@ -55,11 +55,11 @@ https://templatemo.com/tm-590-topic-listing
 
         <main>
 
-            <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>HydroCulus</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -73,38 +73,16 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="index.php">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_2">Browse Topics</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_3">How it works</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_4">FAQs</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_5">Contact</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.php">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
-                                </ul>
+                                <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
-                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <a href="login.php" class="navbar-icon bi-person smoothscroll"></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +96,7 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-5 col-12 mb-5">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.php">Halaman Admin</a></li>
+                                    <li class="breadcrumb-item"><a href="admin.php">Halaman Admin</a></li>
                                 </ol>
                             </nav>
 
@@ -138,7 +116,7 @@ https://templatemo.com/tm-590-topic-listing
 
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
-                <h1>Tabel Sumber Air</h1>
+                <h1>Tabel Sumber Air</h1><br><br>
                 <a type="button" class="btn btn-outline-primary" href="addWater.php">Tambah Data</a>
                 <table class="table caption-top">
                     <caption>List of sumber air</caption>

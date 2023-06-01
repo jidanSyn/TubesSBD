@@ -63,38 +63,18 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="index.php">Home</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_2">Browse Topics</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_3">How it works</a>
+                            <li class="nav-item" >
+                                <a class="nav-link active"  href="topics-listing.php" >List Sumber Air</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_4">FAQs</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_5">Contact</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item active" href="topics-listing.php">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
-                                </ul>
-                            </li>
+                            
                         </ul>
 
                         <div class="d-none d-lg-block">
-                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <a href="login.php" class="navbar-icon bi-person smoothscroll"></a>
                         </div>
                     </div>
                 </div>
@@ -108,13 +88,13 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-5 col-12">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.php">Homepage</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">Topics Listing</li>
+                                    <li class="breadcrumb-item active" aria-current="page">List Sumber Air</li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">Topics Listing</h2>
+                            <h2 class="text-white">List Sumber Air</h2>
                         </div>
 
                     </div>
@@ -127,7 +107,7 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h3 class="mb-4">List Sumber Air</h3>
+                            <h3 class="mb-4">Sumber Air</h3>
                             <!-- Button trigger modal
                             
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -220,13 +200,15 @@ https://templatemo.com/tm-590-topic-listing
                             <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                                 <div class="d-flex">
                                     <span class="badge bg-design rounded-pill"><?=$cacah+=1?></span>
-                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                    <img src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="">
 
                                     <div class="custom-block-topics-listing-info d-flex">
                                         <div>
                                             <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
 
                                             <h6 class="mb-1"><?=$sumberAir['nama_wilayah']?></h6>
+
+                                            <br>
 
                                             <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
                                             <p class="mb-0">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>
@@ -322,7 +304,7 @@ https://templatemo.com/tm-590-topic-listing
             </section>
 
 
-            <section class="section-padding section-bg">
+            <!-- <section class="section-padding section-bg">
                 <div class="container">
                     <div class="row">
 
@@ -392,7 +374,7 @@ https://templatemo.com/tm-590-topic-listing
 
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
 
 		<footer class="site-footer section-padding">

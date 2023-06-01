@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 04:10 PM
+-- Generation Time: Jun 01, 2023 at 09:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -133,7 +133,8 @@ INSERT INTO `sumber_air` (`id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_ai
 (7, 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', 2, 6, 'foto_sumur_abadi_semarang.jpg'),
 (8, 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', 4, 8, 'foto_danau_cermin_lamaru.jpg'),
 (9, 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', 4, 9, 'foto_danau_batur_bali.jpg'),
-(10, 'Sungai Bengawan Solo', 'Rusak Parak', '29', 'Keruh', '7.8', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg');
+(10, 'Sungai Bengawan Solo', 'Rusak Parak', '29', 'Keruh', '7.8', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg'),
+(12, 'Test', 'Rusak Sedang', '29', 'Bening', '7.7', 'Layak', 3, 2, 'default.png');
 
 --
 -- Triggers `sumber_air`
@@ -162,6 +163,50 @@ CREATE TABLE `sumber_air_upaya_peningkatan` (
   `id_sumber_air` int(11) NOT NULL,
   `id_upaya_peningkatan_ketersediaan_air` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sumber_air_upaya_peningkatan`
+--
+
+INSERT INTO `sumber_air_upaya_peningkatan` (`id_sumber_air_upaya_peningkatan`, `id_sumber_air`, `id_upaya_peningkatan_ketersediaan_air`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 7),
+(4, 2, 1),
+(5, 2, 2),
+(6, 2, 7),
+(7, 3, 2),
+(8, 3, 4),
+(9, 3, 5),
+(10, 4, 1),
+(11, 4, 2),
+(12, 4, 3),
+(13, 4, 4),
+(14, 5, 4),
+(15, 5, 5),
+(16, 6, 2),
+(17, 6, 3),
+(18, 6, 4),
+(19, 7, 1),
+(20, 7, 2),
+(21, 7, 5),
+(22, 7, 6),
+(23, 8, 1),
+(24, 8, 2),
+(25, 8, 5),
+(26, 9, 2),
+(27, 9, 3),
+(28, 9, 4),
+(29, 10, 2),
+(30, 10, 3),
+(31, 10, 4),
+(32, 12, 1),
+(33, 12, 2),
+(34, 12, 3),
+(35, 12, 4),
+(36, 12, 5),
+(37, 12, 6),
+(38, 12, 7);
 
 -- --------------------------------------------------------
 
@@ -290,13 +335,13 @@ ALTER TABLE `log_update_sumber_air`
 -- AUTO_INCREMENT for table `sumber_air`
 --
 ALTER TABLE `sumber_air`
-  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sumber_air_upaya_peningkatan`
 --
 ALTER TABLE `sumber_air_upaya_peningkatan`
-  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `upaya_peningkatan_ketersediaan_air`

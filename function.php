@@ -62,6 +62,63 @@
 
         return $result;
     };
+function addWater($data, $file, $listUpaya)
+{
+
+    global $conn;
+    $foto = $file['image']['name'];
+    $tempNamaFoto = $file['image']['tmp_name'];
+    $direktori = 'images/foto_sumber_air/' . $foto;
+    $isMoved = move_uploaded_file($tempNamaFoto, $direktori);
+
+    if(!$isMoved) $foto = 'default.png';
+
+       
+    $namaSumberAir = $data['nama_sumber_air'];
+    $wilayah = $data['wilayah'];
+    $jenis = $data['jenis_sumber_air'];
+    $kondisi = $data['kondisi'];
+    $suhu = $data['suhu'] / 10.0;
+    $pH = $data['pH'] / 10.0;
+    $warna = $data['warna'];
+    $kelayakan = $data['layak_minum'];
+
+
+    $query = "INSERT INTO sumber_air VALUES(
+        '',
+        '$namaSumberAir',
+        '$kondisi',
+        '$suhu',
+        '$warna',
+        '$pH',
+        '$kelayakan',
+        '$jenis',
+        '$wilayah',
+        '$foto'
+    )";
+
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+    if($isSucceed > 0) {
+        $query = "SELECT id_sumber_air FROM sumber_air WHERE nama_sumber_air LIKE '$namaSumberAir'";
+        $result = mysqli_query($conn, $query);
+        while($data = mysqli_fetch_assoc($result)) {
+            $id = $data['id_sumber_air'];
+        }
+        foreach ($listUpaya as $upaya) {
+            $query = "INSERT INTO sumber_air_upaya_peningkatan VALUES(
+                '',
+                '$id',
+                '$upaya'
+            )";
+            $result = mysqli_query($conn, $query);
+        }
+    }
+    
+    //mengembalikan nilai sukses
+    return $isSucceed;
+}
 
 function updateWater($data, $file, $listUpaya)
 {
@@ -71,6 +128,7 @@ function updateWater($data, $file, $listUpaya)
     $namaSumberAir = $data['nama_sumber_air'];
     $wilayah = $data['wilayah'];
     $jenis = $data['jenis_sumber_air'];
+    $kondisi = $data['kondisi'];
     $suhu = $data['suhu'] / 10.0;
     $pH = $data['pH'] / 10.0;
     $warna = $data['warna'];
@@ -94,7 +152,8 @@ function updateWater($data, $file, $listUpaya)
         nama_sumber_air = '$namaSumberAir', 
         foto_sumber_air = '$foto', 
         id_wilayah = '$wilayah', 
-        id_jenis_sumber_air = '$jenis', 
+        id_jenis_sumber_air = '$jenis',
+        kondisi_sumber_air = '$kondisi', 
         suhu = '$suhu',
         pH = '$pH',
         warna = '$warna',
@@ -106,7 +165,8 @@ function updateWater($data, $file, $listUpaya)
         $query = "UPDATE sumber_air SET 
         nama_sumber_air = '$namaSumberAir', 
         id_wilayah = '$wilayah', 
-        id_jenis_sumber_air = '$jenis', 
+        id_jenis_sumber_air = '$jenis',
+        kondisi_sumber_air = '$kondisi',  
         suhu = '$suhu',
         pH = '$pH',
         warna = '$warna',

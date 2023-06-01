@@ -48,8 +48,7 @@ if (isset($_POST['submit-update'])) {
 
   // jalankan query tambah record baru
   $isAddSucceed = updateWater($_POST, $_FILES, $listUpaya);
-  print_r($r_jenis);
-  echo $isAddSucceed;
+  
   if ($isAddSucceed > 0) {
     // jika penambahan sukses, tampilkan alert
     echo "
@@ -206,9 +205,10 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-12">
                                         <div class="form-floating">
                                             <select name="wilayah" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
+                                            <option value="" disabled>Wilayah</option>
                                                 <?php
                                                     foreach($r_wilayah as $wilayah) {
                                                 ?>
@@ -220,9 +220,10 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12"> 
+                                    <div class="col-lg-4 col-md-6 col-12"> 
                                         <div class="form-floating">
                                             <select name="jenis_sumber_air" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
+                                            <option value="" disabled>Jenis Sumber Air</option>
                                             <?php
                                                     foreach($r_jenis as $jenis) {
                                                 ?>
@@ -230,6 +231,19 @@ https://templatemo.com/tm-590-topic-listing
                                                 <?php  
                                                     }
                                                 ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <select name="kondisi" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" required>
+                                                
+                                                <option value="" disabled>Kondisi Sumber Air</option>
+                                                <option value="Baik" <?php if($current['kondisi_sumber_air'] == 'Baik') echo "selected";?>>Baik</option>
+                                                <option value="Rusak Sedang" <?php if($current['kondisi_sumber_air'] == 'Rusak Sedang') echo "selected";?>>Rusak Sedang</option>
+                                                <option value="Rusak Parah" <?php if($current['kondisi_sumber_air'] == 'Rusak Parah') echo "selected";?>>Rusak Parah</option>
+                                                
                                             </select>
                                         </div>
                                     </div>

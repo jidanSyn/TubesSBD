@@ -20,6 +20,38 @@
 // jquery
 
 $(document).ready(function(){
+    let slideCount = $('#slideCount').val();
+    let slideIndex = 0;
+    $('div[data-index="0"]').addClass('show');
+
+    $('#prev-button').on('click', function() {
+        console.log(slideIndex);
+        if(slideIndex > 0) {
+            $('div[data-index]').removeClass('show');
+            slideIndex--;
+            setTimeout(function () {
+                //your code to be executed after 1 second
+                $('div[data-index=\"' + slideIndex + '\"]').addClass('show');
+            }, 250);
+        }
+        console.log(slideIndex);
+
+        // alert('clicked');
+    })
+
+    $('#next-button').on('click', function () {
+        console.log(slideIndex);
+        if (slideIndex < slideCount - 1) {
+            $('div[data-index]').removeClass('show');
+            slideIndex++;
+            setTimeout(function () {
+                //your code to be executed after 1 second
+                $('div[data-index=\"' + slideIndex + '\"]').addClass('show');
+            }, 250);
+        }
+        console.log(slideIndex);
+        // alert('next');
+    })
 
     let jenis = '';
     let kondisi = '';
@@ -78,6 +110,8 @@ $(document).ready(function(){
     
     // console.log('ok lah');
     $('#keyword').on('keyup', function() {
+        // $('div[data-index]').removeClass('show');
+        
         // jquery compact
         // $('#active-search').load('ajax/search.php?keyword=' + $('#keyword').val());
         // console.log(jenis);
@@ -88,6 +122,8 @@ $(document).ready(function(){
         $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&provinsi=' + provinsi + '&regency=' + regency + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });
+        $('div[data-index="0"]').addClass('show');
+        slideIndex = 0;
     });
 
     $('#filter-reset').on('click', function () {
@@ -105,12 +141,18 @@ $(document).ready(function(){
     });
 
     $('#filter-apply').on('click', function () {
+        // $('div[data-index=]').removeClass('show');
+        
         
         $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&provinsi=' + provinsi + '&regency=' + regency + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });
+        $('div[data-index="0"]').addClass('show');
+        slideIndex = 0;
 
     });
+
+    // $('div[data-index="0"]').addClass('show');
 });
 
 

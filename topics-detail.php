@@ -129,7 +129,7 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-8 col-12 m-auto">
                             <h3 class="mb-4"><?=$detail_air['nama_sumber_air']?></h3>
 
-                            <p><?=$detail_air['nama_sumber_air']?> berada di wilayah <?=$detail_air['nama_wilayah']?></p>
+                            <p><?=$detail_air['nama_sumber_air']?> berada di <?=$detail_air['name']?>, <?=$detail_air['provinces_name']?></p>
 
                             <p>Kondisi Sumber Air: <?=$detail_air['kondisi_sumber_air']?></p>
 

@@ -22,6 +22,27 @@
         return $eksekusi;
     }
 
+    function readSumberAirLimit($start, $limit){
+        global $conn;
+        
+
+        $query = "SELECT * FROM sumber_air 
+        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
+        JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+        ORDER BY id_sumber_air
+        LIMIT $start, $limit
+        ";
+
+        
+
+
+        $eksekusi = mysqli_query($conn, $query);
+
+        return $eksekusi;
+    }
+
  
     function readOneSumberAir($id){
         global $conn;

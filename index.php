@@ -11,6 +11,33 @@
     $r_jenis = readTable($conn, 'jenis_sumber_air');
     $r_provinces = readTable($conn2, 'provinces');
     $r_regencies = readTable($conn2, 'regencies');
+
+    $dataPerSlide = 3;
+    $dataCount = mysqli_num_rows($listSumberAir);
+    $slideCount = ceil($dataCount / $dataPerSlide);
+    $activeSlide = ( isset($_GET["slide"]) ) ? $_GET["slide"] : 1;
+    $slideNo = 0;
+    // 0 1 2, 1
+    // 3 4 5, 2
+    // 6 7 8, 3
+    $startSlide = ($dataPerSlide * $activeSlide) - $dataPerSlide;
+
+    
+
+    $slides = [];
+    for($i = 2; $i <= $slideCount + 1; $i++) {
+        array_push($slides, readSumberAirLimit($slideNo, $dataPerSlide));
+        $slideNo = ($dataPerSlide * $i) - $dataPerSlide;
+
+    }
+
+    // echo "<pre>";
+    // for($i = 0; $i < $slideCount; $i++) {
+    //     foreach($slides[$i] as $data) {
+    //         var_dump($data);
+    //     }
+    // }
+    // die();
 ?>
 
 <!doctype html>
@@ -53,9 +80,7 @@
                 
                 box-shadow: 0 0 5px 5px white inset;
             }
-            .image-wrapper::after,.image-wrapper::before {
-                
-            }
+            
         </style>
 <!--
 
@@ -67,7 +92,7 @@ https://templatemo.com/tm-590-topic-listing
     </head>
     
     <body class="topics-listing-page" id="top">
-
+            <input type="number" hidden id="slideCount" value="<?=$slideCount?>">
         <main>
 
             <nav class="navbar navbar-expand-lg">
@@ -111,19 +136,6 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-8 col-12 mx-auto">
                             <h1 class="text-white text-center">Sumber Air di Indonesia</h1>
 
-                            <!-- <h6 class="text-center">daerah bandung</h6> -->
-
-                            <!-- <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text bi-search" id="basic-addon1">
-                                        
-                                    </span>
-
-                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Cari di wilayah" aria-label="Search">
-
-                                    <button type="submit" class="form-control">Cari</button>
-                                </div>
-                            </form> -->
                         </div>
 
                     </div>
@@ -206,10 +218,6 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto" style="height: 120px">
-                            <!-- <h1 class="text-white text-center">Sumber Air di Indonesia</h1> -->
-
-                            <!-- <h6 class="text-center">daerah bandung</h6> -->
-
                             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text bi-search" id="basic-addon1">
@@ -228,7 +236,11 @@ https://templatemo.com/tm-590-topic-listing
             </section>
 
 
-            <section class="explore-section section-padding" id="section_2" style="padding-top: 0px">
+            <section class="explore-section section-padding" id="section_2" style="padding-top: 0px; padding-bottom: 500px" style="position: relative">
+            <a id="prev-button" style="position:absolute; left: 0; top: 1150px; width: 50px; height:500px; z-index: 99;"></a>
+            <a id="next-button" style="position:absolute; right: 0; top: 1150px; width: 50px; height:500px; z-index: 99;"></a>
+            <img src="images/button/next-svgrepo-com.svg" alt="" style="position:absolute; top: 1350px; right: 0; width:30px; height:30px; z-index: 98;">
+            <img src="images/button/previous-svgrepo-com.svg" alt="" style="position:absolute; top: 1350px; left: 0; width:30px; height:30px; z-index: 98;">
                 <div class="container">
                     <form action="" method="get">
                         <div class="row">
@@ -331,13 +343,6 @@ https://templatemo.com/tm-590-topic-listing
                     
                     
                     <div class="row">
-
-                        <!-- <div class="col-12 text-center">
-                            <h2 class="mb-4">Browse Topics</h1>
-                            
-                            
-                        </div> -->
-
                     </div>
                 </div>
 
@@ -371,17 +376,29 @@ https://templatemo.com/tm-590-topic-listing
                     </div>
                 </div>
 
-                <div class="container">
-                    <div class="row">
+                <div class="container" >
+                    
+                    <div class="row" >
 
-                        <div class="col-12">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="all-pane" role="tabpanel" aria-labelledby="all" tabindex="0">
-                                    <div id="active-search">
+                        <div class="col-12" >
+                            
+                            <div class="tab-content" id="myTabContent" style="position:relative">
+                                
+                                <div id="active-search">
+                                    <?php
+                                        for($i = 0; $i < $slideCount; $i++) {
+                                            // foreach($slides[$i] as $data) {
+                                            //     var_dump($data);
+                                            // }
+                                    ?>
+                                    
+                                    <div class="tab-pane fade " id="all-pane" role="tabpanel" aria-labelledby="all" data-index="<?=$i?>" style="position:absolute">
                                         <div class="row">
-                                        <?php
+                                    <?php
+
+
                                         $count = 0;
-                                        foreach($listSumberAir as $sumberAir) 
+                                        foreach($slides[$i] as $sumberAir) 
                                         {
                                             ?>
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3" >
@@ -398,514 +415,26 @@ https://templatemo.com/tm-590-topic-listing
 
                                                         <span class="badge bg-design rounded-pill ms-auto"><?=$sumberAir['id_sumber_air']?></span>
                                                     </div>
-                                                    <!-- <div class="image-wrapper"> -->
+                                                    
                                                         <img class="img-fluid " src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="" style="border-radius: 20px;">
-                                                    <!-- </div> -->
+                                                    
                                                 </a>
                                             </div>
                                         </div>
                                         
                                         <?php
-                                        
+                                        $count++;
                                         }
                                         ?>
-                                        <!-- <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Graphic</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">75</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>-->
-
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
-
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                    
-                                </div> 
-
-                                <div class="tab-pane fade" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
-                                    <div class="row">
-                                        <?php
-                                        $count = 0;
-                                        foreach($listSumberAirKondisi as $sumberAir) 
-                                        {
-                                            ?>
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0" >
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-
-                                                            <p class="mb-0"><?=$sumberAir['kondisi_sumber_air']?></p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
                                         
-                                        <?php
-                                        
-                                        }
-                                        ?>
-                                        <!-- <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Graphic</h5>
-
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">75</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>-->
-
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
-
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div> 
-                                <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
-                                    <div class="col-12 text-center">
-                                        <h4 class="mb-4">Suhu normal air yang baik antara 10°C - 25°C</h4>
-                                    </div>
-                                    <div class="row">
-                                    <?php
-                                        foreach($listSumberAirSuhu as $sumberAir) 
-                                        {
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-
-                                                            <p class="mb-0"><?=$sumberAir['suhu']?>°C</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
                                     <?php
                                         }
                                     ?>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
 
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                <!-- <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                                <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.php">
-                                                        <div class="d-flex">
-                                                            <div>
-                                                                <h5 class="mb-2">Advertising</h5>
-
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                            </div>
-
-                                                            <span class="badge bg-advertising rounded-pill ms-auto">30</span>
-                                                        </div>
-
-                                                        <img src="images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                                <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.php">
-                                                        <div class="d-flex">
-                                                            <div>
-                                                                <h5 class="mb-2">Video Content</h5>
-
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                            </div>
-
-                                                            <span class="badge bg-advertising rounded-pill ms-auto">65</span>
-                                                        </div>
-
-                                                        <img src="images/topics/undraw_Group_video_re_btu7.png" class="custom-block-image img-fluid" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-4 col-md-6 col-12">
-                                                <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topics-detail.php">
-                                                        <div class="d-flex">
-                                                            <div>
-                                                                <h5 class="mb-2">Viral Tweet</h5>
-
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                            </div>
-
-                                                            <span class="badge bg-advertising rounded-pill ms-auto">50</span>
-                                                        </div>
-
-                                                        <img src="images/topics/undraw_viral_tweet_gndb.png" class="custom-block-image img-fluid" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>-->
-                                    </div> 
-                                </div>
-
-                                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   
-                                    <div class="row">
-                                    <?php
-                                        foreach($listSumberAirWarna as $sumberAir) 
-                                        {
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-
-                                                            <p class="mb-0"><?=$sumberAir['warna']?></p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php
-                                        }
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
-
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Investment</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="custom-block custom-block-overlay">
-                                                <div class="d-flex flex-column h-100">
-                                                    <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg" class="custom-block-image img-fluid" alt="">
-
-                                                    <div class="custom-block-overlay-text d-flex">
-                                                        <div>
-                                                            <h5 class="text-white mb-2">Finance</h5>
-
-                                                            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis</p>
-
-                                                            <a href="topics-detail.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
-                                                        </div>
-
-                                                        <span class="badge bg-finance rounded-pill ms-auto">25</span>
-                                                    </div>
-
-                                                    <div class="social-share d-flex">
-                                                        <p class="text-white me-4">Share:</p>
-
-                                                        <ul class="social-icon">
-                                                            <li class="social-icon-item">
-                                                                <a href="#" class="social-icon-link bi-twitter"></a>
-                                                            </li>
-
-                                                            <li class="social-icon-item">
-                                                                <a href="#" class="social-icon-link bi-facebook"></a>
-                                                            </li>
-
-                                                            <li class="social-icon-item">
-                                                                <a href="#" class="social-icon-link bi-pinterest"></a>
-                                                            </li>
-                                                        </ul>
-
-                                                        <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
-                                                    </div>
-
-                                                    <div class="section-overlay"></div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
-                                    <div class="row">
-                                    <?php
-                                        foreach($listSumberAirpH as $sumberAir) 
-                                        {
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-
-                                                            <p class="mb-0"><?=$sumberAir['pH']?></p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php
-                                        }
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
-
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Composing Song</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-music rounded-pill ms-auto">45</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Compose_music_re_wpiw.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Online Music</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-music rounded-pill ms-auto">45</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_happy_music_g6wc.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Podcast</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-music rounded-pill ms-auto">20</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
-                                    <div class="row">
-                                    <?php
-                                        foreach($listSumberAirLayakMinum as $sumberAir) 
-                                        {
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-
-                                                            <p class="mb-0"><?=$sumberAir['layak_minum']?> Minum</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php
-                                        }
-                                    ?>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-listing.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Selengkapnya</h5>
-
-                                                                <p class="mb-0">List sumber air yang lainnya ada disini!</p>
-                                                        </div>
-
-                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                    </div>
-
-                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Graduation</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-education rounded-pill ms-auto">80</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Graduation_re_gthn.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.php">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Educator</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-education rounded-pill ms-auto">75</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Educator_re_ju47.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-
+                               
                     </div>
                 </div>
             </section>

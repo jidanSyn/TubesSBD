@@ -46,36 +46,81 @@
 
     $listSumberAir = mysqli_query($conn, $query);
 
+    $dataPerSlide = 3;
+    $dataCount = mysqli_num_rows($listSumberAir);
+    $slideCount = ceil($dataCount / $dataPerSlide);
+
+    $slideNo = 0;
+    // 0 1 2, 1
+    // 3 4 5, 2
+    // 6 7 8, 3
+    //$startSlide = ($dataPerSlide * $activeSlide) - $dataPerSlide;
+
+    function readSumberAirLimitSearch($conn, $query, $start, $limit) {
+        
+        $query .= " LIMIT $start, $limit";
+        $result = mysqli_query($conn, $query);
+        return $result;
+        
+    
+    }
+
+    
+
+    $slides = [];
+    for($i = 2; $i <= $slideCount + 1; $i++) {
+        array_push($slides, readSumberAirLimitSearch($conn, $query, $slideNo, $dataPerSlide));
+        $slideNo = ($dataPerSlide * $i) - $dataPerSlide;
+
+    }
+
 ?>
 
+<?php
+for($i = 0; $i < $slideCount; $i++) {
+    // foreach($slides[$i] as $data) {
+    //     var_dump($data);
+    // }
+?>
+
+<div class="tab-pane fade <?php if($i == 0) echo "show"     ?>" id="all-pane" role="tabpanel" aria-labelledby="all" data-index="<?=$i?>" style="position:absolute">
 <div class="row">
-    <?php
-    $count = 0;
-    foreach($listSumberAir as $sumberAir) 
-    {
+<?php
+
+
+$count = 0;
+foreach($slides[$i] as $sumberAir) 
+{
     ?>
-    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3" >
-        <div class="custom-block bg-white shadow-lg">
-                <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
-                        <div class="d-flex">
-                            <div>
-                                <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-                                <h6 class="mb-1"><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></h6>
+<div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3" >
+    <div class="custom-block bg-white shadow-lg">
+        <a href="topics-detail.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">
+            <div class="d-flex">
+                <div>
+                    <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+                    <h6 class="mb-1"><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></h6>
 
-                                <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
-                                <p class="mb-1">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>
-                            </div>
+                    <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
+                    <p class="mb-1">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>
+                </div>
 
-                            <span class="badge bg-design rounded-pill ms-auto"><?=$sumberAir['id_sumber_air']?></span>
-                        </div>
-                        <div class="image-wrapper">
-                            <img class="img-fluid" src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="" style="border-radius: 20px;">
-                        </div>
-                </a>
-        </div>
+                <span class="badge bg-design rounded-pill ms-auto"><?=$sumberAir['id_sumber_air']?></span>
+            </div>
+            
+                <img class="img-fluid " src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="" style="border-radius: 20px;">
+            
+        </a>
     </div>
-                                        
-    <?php                                        
-    }
-    ?>
 </div>
+
+<?php
+$count++;
+}
+?>
+
+
+</div>
+</div> 
+<?php
+}
+?>

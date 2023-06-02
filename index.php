@@ -129,7 +129,7 @@ https://templatemo.com/tm-590-topic-listing
             </nav>
             
 
-            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_0">
                 <div class="container">
                     <div class="row">
 
@@ -157,7 +157,7 @@ https://templatemo.com/tm-590-topic-listing
                                             <p class="mb-0">Kami adalah website yang berfokus pada pencarian sumber air di Indonesia.</p>
                                         </div>
 
-                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                        <span class="badge bg-design rounded-pill ms-auto">19</span>
                                     </div>
 
                                     <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
@@ -168,7 +168,7 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-6 col-12">
                             <div class="custom-block custom-block-overlay">
                                 <div class="d-flex flex-column h-100">
-                                    <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
+                                    <img src="images/tetesan-air-0.jpg" class="custom-block-image img-fluid" alt="">
 
                                     <div class="custom-block-overlay-text d-flex">
                                         <div>
@@ -178,10 +178,10 @@ https://templatemo.com/tm-590-topic-listing
                                             
                                             <p class="text-white">Kalian bisa mencari daerah yang memiliki sumber air dan juga karakteristiknya. Mengetahui kondisinya? Bisa. Suhunya? Bisa dong. Warna dan pH-nya? Tentu saja bisa. Kalian juga bisa mencari hal lainnya yang berkaitan dengan sumber air di Indonesia :)</p>
 
-                                            <a href="topics-listing.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                            <a href="#search" class="btn custom-btn mt-2 mt-lg-3">Jelajahi</a>
                                         </div>
 
-                                        <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                        <span class="badge bg-finance rounded-pill ms-auto">45</span>
                                     </div>
 
                                     <div class="social-share d-flex">
@@ -197,7 +197,7 @@ https://templatemo.com/tm-590-topic-listing
                                             </li>
 
                                             <li class="social-icon-item">
-                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                                <a href="#" class="social-icon-link bi-instagram"></a>
                                             </li>
                                         </ul>
 
@@ -216,8 +216,9 @@ https://templatemo.com/tm-590-topic-listing
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="padding: 0px; background-image: linear-gradient(0deg, #13547a 0%, #80d0c7 100%); margin-bottom: 20px;">
                 <div class="container">
                     <div class="row">
-
+                        <div class="col-lg-8 col-12 mx-auto" style="height: 50px"  id="search"></div>
                         <div class="col-lg-8 col-12 mx-auto" style="height: 120px">
+
                             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text bi-search" id="basic-addon1">
@@ -427,12 +428,14 @@ https://templatemo.com/tm-590-topic-listing
                                         }
                                         ?>
 
+
                                         
                                     </div>
                                 </div> 
                                     <?php
                                         }
                                     ?>
+
 
                                
                     </div>
@@ -447,7 +450,7 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-12 text-center">
-                            <h2 class="text-white mb-4">How does it work?</h1>
+                            <h2 class="text-white mb-4">Upaya Melestarikan Sumber Air</h1>
                         </div>
 
                         <div class="col-lg-10 col-12 mx-auto">
@@ -458,9 +461,9 @@ https://templatemo.com/tm-590-topic-listing
                                     </div>
 
                                     <li>
-                                        <h4 class="text-white mb-3">Search your favourite topic</h4>
+                                        <h4 class="text-white mb-3">Memperluas gerakan penghijauan</h4>
 
-                                        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, cumque magnam? Sequi, cupiditate quibusdam alias illum sed esse ad dignissimos libero sunt, quisquam numquam aliquam? Voluptas, accusamus omnis?</p>
+                                        <p class="text-white">Penghijauan sebagai saran pencegah terjadinya bencana banjir dan erosi tanah. Dengan banyaknya pohon besar dan tinggi, air hujan akan diserap oleh akar tumbuhan. Kemudian air hujan tersebut diubah menjadi air tanah yang dapat memenuhi kebutuhan manusia dan makhluk lainnya.</p>
 
                                         <div class="icon-holder">
                                           <i class="bi-search"></i>
@@ -468,22 +471,22 @@ https://templatemo.com/tm-590-topic-listing
                                     </li>
                                     
                                     <li>
-                                        <h4 class="text-white mb-3">Bookmark &amp; Keep it for yourself</h4>
+                                        <h4 class="text-white mb-3">Menggunakan air bersih dengan bijaksana</h4>
 
-                                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis est vel quo, nihil repellat quia velit error modi earum similique odit labore. Doloremque, repudiandae?</p>
+                                        <p class="text-white">Menggunakan air bersih dengan bijaksana atau seperlunya saja memiliki banyak manfaat. Diantaranya adalah dapat menjaga cadangan air agar tidak menipis, menjaga keseimbangan jumlah air, menjaga keseimbangan ekosistem air, dan untuk menghemat biaya pengeluaran air.</p>
 
                                         <div class="icon-holder">
-                                          <i class="bi-bookmark"></i>
+                                          <i class="bi-lightbulb-fill"></i>
                                         </div>
                                     </li>
 
                                     <li>
-                                        <h4 class="text-white mb-3">Read &amp; Enjoy</h4>
+                                        <h4 class="text-white mb-3">Tidak membuang sampah sembarangan</h4>
 
-                                        <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vero quisquam, rem assumenda similique voluptas distinctio, iste est hic eveniet debitis ut ducimus beatae id? Quam culpa deleniti officiis autem?</p>
+                                        <p class="text-white">Membuang sampah ke tempatnya ataupun melakukan 3R (Reduce, Reuse, Recycle) merupakan langkah mudah yang bisa dilakukan oleh masyarakat untuk melestarikan sumber air.</p>
 
                                         <div class="icon-holder">
-                                          <i class="bi-book"></i>
+                                          <i class="bi-trash"></i>
                                         </div>
                                     </li>
                                 </ul>
@@ -492,8 +495,8 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-12 text-center mt-5">
                             <p class="text-white">
-                                Want to learn more?
-                                <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
+                                Ingin tahu apa lagi?
+                                <a href="#" class="btn custom-btn custom-border-btn ms-3">lainnya</a>
                             </p>
                         </div>
                     </div>
@@ -506,7 +509,7 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                            <h2 class="mb-4">Sumber Air itu apa sih?</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -520,13 +523,14 @@ https://templatemo.com/tm-590-topic-listing
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
+                                        Apa itu sumber air?
                                         </button>
                                     </h2>
 
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                            sumber air adalah tempat atau wadah air alami dan atau buatan yang terdapat pada, di atas, ataupun di bawah permukaan tanah.
+                                            Beberapa jenis sumber air diantaranya adalah mata air, waduk, sungai, danau dan sumur.
                                         </div>
                                     </div>
                                 </div>
@@ -534,13 +538,14 @@ https://templatemo.com/tm-590-topic-listing
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to find a topic?
+                                        Sumber air dengan kondisi yang baik?
                                     </button>
                                     </h2>
 
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                            Sumber air yang memiliki kondisi yang baik adalah sumber air yang baik dalam penyediaan dan penggunaannya. Sumber air yang menyediakan air melimpah juga konsisten, dapat digunakan oleh masyarakat dengan baik, 
+                                            memiliki fasilitas yang terawat, memiliki akses yang mudah, tidak rusak dan tidak tercemar sampah.
                                         </div>
                                     </div>
                                 </div>
@@ -548,13 +553,13 @@ https://templatemo.com/tm-590-topic-listing
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Does it need to paid?
+                                            Sumber air perlu dilestarikan?
                                     </button>
                                     </h2>
 
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            Tentu saja sumber air perlu dilestarikan. Kita harus berupaya untuk menjaga ketersediaan dan kualitas air pada sumber air. Karena air menjalankan fungsi penting untuk keberlangsungan hidup manusia. Air yang bersih adalah hak asasi manusia karena air yang bersih berguna untuk menopang kesehatan masyarakat. Oleh karenanya penting bagi manusia melestarikan air dan menggunakannya dengan bijak.
                                         </div>
                                     </div>
                                 </div>
@@ -566,7 +571,7 @@ https://templatemo.com/tm-590-topic-listing
             </section>
 
 
-            <section class="contact-section section-padding section-bg" id="section_5">
+            <!-- <section class="contact-section section-padding section-bg" id="section_5">
                 <div class="container">
                     <div class="row">
 
@@ -628,7 +633,7 @@ https://templatemo.com/tm-590-topic-listing
 
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
 
 <footer class="site-footer section-padding">
@@ -638,7 +643,7 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="col-lg-3 col-12 mb-4 pb-2">
                         <a class="navbar-brand mb-2" href="index.php">
                             <i class="bi-back"></i>
-                            <span>Topic</span>
+                            <span>HydroCulus</span>
                         </a>
                     </div>
 
@@ -651,15 +656,15 @@ https://templatemo.com/tm-590-topic-listing
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">How it works</a>
+                                <a href="topics-listing.php" class="site-footer-link">List Sumber Air</a>
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">FAQs</a>
+                                <a href="#" class="site-footer-link">Upaya Melestarikan Sumber Air</a>
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Contact</a>
+                                <a href="admin.php" class="site-footer-link">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -668,20 +673,20 @@ https://templatemo.com/tm-590-topic-listing
                         <h6 class="site-footer-title mb-3">Information</h6>
 
                         <p class="text-white d-flex mb-1">
-                            <a href="tel: 305-240-9671" class="site-footer-link">
-                                305-240-9671
+                            <a href="tel:" class="site-footer-link">
+                                17-08-1945
                             </a>
                         </p>
 
                         <p class="text-white d-flex">
                             <a href="mailto:info@company.com" class="site-footer-link">
-                                info@company.com
+                                hydroculus@sumberair.com
                             </a>
                         </p>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             English</button>
 
@@ -692,10 +697,10 @@ https://templatemo.com/tm-590-topic-listing
 
                                 <li><button class="dropdown-item" type="button">Arabic</button></li>
                             </ul>
-                        </div>
+                        </div> -->
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
-                        <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2023 HydroCulus. <br> All rights reserved.
+                        <!-- <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p> -->
                         
                     </div>
 

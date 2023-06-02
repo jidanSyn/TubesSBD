@@ -23,6 +23,8 @@ $(document).ready(function(){
 
     let jenis = '';
     let kondisi = '';
+    var provinsi = '';
+    var regency = '';
     let sort = 'id_sumber_air';
     let order = 'ASC';
     let keyword = '';
@@ -34,6 +36,33 @@ $(document).ready(function(){
 
     $('#filter-order').on('change reset', function () {
         order = this.value;
+    });
+
+    $('#filter-provinsi').on('change reset', function () {
+        provinsi = this.value;
+        var url = 'get_kabupaten.php?id_prov=' + provinsi;
+
+        $("#kabupaten").html('');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function (result) {
+                $("#regency-title").remove();
+                $("#filter-regency").append('<option value="" selected disabled>Pilih</option>');
+                $("#filter-regency").append('<option value="" >All</option>');
+                for (var i = 0; i < result.length; i++) {
+                    // apa yang akan dilakukan pada data json yang sudah digenerate
+                    $("#filter-regency").append('<option value="' + result[i].id_kab + '">' + result[i].nama + '</option>');
+                }
+            }
+        });
+
+    });
+
+    $('#filter-regency').on('change reset', function () {
+        regency = this.value;
+
     });
 
     $('#filter-jenis').on('change reset', function () {
@@ -56,7 +85,7 @@ $(document).ready(function(){
         
 
         // jquery flexible
-        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
+        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&provinsi=' + provinsi + '&regency=' + regency + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });
     });
@@ -64,15 +93,20 @@ $(document).ready(function(){
     $('#filter-reset').on('click', function () {
         jenis = '';
         kondisi = '';
+        provinsi = '';
+        regency = '';
         sort = 'id_sumber_air';
         order = 'ASC';
+        // $.get('ajax/regency.php?&provinsi=' + provinsi, function (data) {
+        //     $('#regency').html(data);
+        // });
         
 
     });
 
     $('#filter-apply').on('click', function () {
         
-        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
+        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&provinsi=' + provinsi + '&regency=' + regency + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });
 

@@ -4,16 +4,18 @@
     global $conn;
     $keyword = $_GET["keyword"];
     $sort = $_GET["sort"];
-    $order = $_GET["order"];    
+    $order = $_GET["order"];
+    $provinsi = $_GET["provinsi"];
+    $regency = $_GET["regency"];    
     $jenis = $_GET["jenis"];
     $kondisi = $_GET["kondisi"];
 
     // echo "<script>alert('$sort' + ' $order' + ' $jenis')</script>";
 
-    $query = "SELECT 
-        id_sumber_air, nama_sumber_air, kondisi_sumber_air, suhu, warna, pH, layak_minum, sumber_air.id_jenis_sumber_air, sumber_air.id_wilayah, foto_sumber_air, nama_wilayah, nama_jenis_sumber_air
-        FROM sumber_air 
-        JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    $query = "SELECT * FROM sumber_air 
+        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         WHERE 
         ( nama_sumber_air LIKE '%$keyword%'OR
@@ -22,9 +24,17 @@
         warna LIKE '%$keyword%'OR
         pH LIKE '%$keyword%'OR
         layak_minum LIKE '%$keyword%'OR
-        nama_wilayah LIKE '%$keyword%'OR
+        name LIKE '%$keyword%'OR
+        provinces_name LIKE '%$keyword%'OR
         nama_jenis_sumber_air LIKE '%$keyword%' ) 
         ";
+    if($provinsi != '') {
+        $query .= "AND wilayah_indonesia.regencies.province_id = '$provinsi' ";
+    }
+    if($regency != '') {
+        $query .= "AND sumber_air.id_kabupaten = '$regency' ";
+    }
+
     if($jenis != '') {
         $query .= "AND sumber_air.id_jenis_sumber_air = '$jenis' ";
     }
@@ -50,7 +60,7 @@
                         <div class="d-flex">
                             <div>
                                 <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-                                <h6 class="mb-1"><?=$sumberAir['nama_wilayah']?></h6>
+                                <h6 class="mb-1"><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></h6>
 
                                 <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
                                 <p class="mb-1">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>

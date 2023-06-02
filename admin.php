@@ -151,7 +151,7 @@ https://templatemo.com/tm-590-topic-listing
                         <td><?=$sumberAir['suhu']?></td>
                         <td><?=$sumberAir['warna']?></td>
                         <td><?=$sumberAir['layak_minum']?></td>
-                        <td><?=$sumberAir['nama_wilayah']?></td>
+                        <td><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></td>
                         <td><?=$sumberAir['nama_jenis_sumber_air']?></td>
                         <td><a href="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>">See image</a></td>
                         <td><a type="button" class="btn btn-outline-success" href="updateWater.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">Update</a> 

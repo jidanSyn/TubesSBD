@@ -1,12 +1,15 @@
 <?php
     include('config.php');
+    include('config_wilayah.php');
 
     function readSumberAir(){
         global $conn;
         
 
         $query = "SELECT * FROM sumber_air 
-        JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         ORDER BY 'nama_sumber_air' ASC
         ";
@@ -24,7 +27,9 @@
         global $conn;
 
         $query = "SELECT * FROM sumber_air 
-        JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         WHERE sumber_air.id_sumber_air = " . $id;
 
@@ -67,10 +72,21 @@
 
         return $result;
     };
-function addWater($data, $file, $listUpaya)
-{
+
+    function readTableWilayah($table){
+        global $mysqli;
+        $query = "SELECT * FROM ".$table;
+        $result = mysqli_query($mysqli, $query);
+
+
+        return $result;
+    };
+    
+
+function addWater($data, $file, $listUpaya){
 
     global $conn;
+    global $mysqli;
     $foto = $file['image']['name'];
     $tempNamaFoto = $file['image']['tmp_name'];
     $direktori = 'images/foto_sumber_air/' . $foto;
@@ -80,13 +96,25 @@ function addWater($data, $file, $listUpaya)
 
        
     $namaSumberAir = $data['nama_sumber_air'];
-    $wilayah = $data['wilayah'];
+    // $provinsi = $_POST['provinsi'];
+    $kabupaten = $_POST['kabupaten'];
+    // $wilayah = $data['wilayah'];
     $jenis = $data['jenis_sumber_air'];
     $kondisi = $data['kondisi'];
     $suhu = $data['suhu'] / 10.0;
     $pH = $data['pH'] / 10.0;
     $warna = $data['warna'];
     $kelayakan = $data['layak_minum'];
+
+    // $query_str = "SELECT name FROM provinces WHERE id='$provinsi'";
+    // $data = $mysqli->query($query_str);
+    // $provinsi_str = $data->fetch_array();
+    
+    // $query_str = "SELECT name FROM regencies WHERE id='$kabupaten'";
+    // $data = $mysqli->query($query_str);
+    // $kabupaten_str = $data->fetch_array();
+
+    // $wilayah = $kabupaten_str[0] . ', ' . $provinsi_str[0];
 
 
     $query = "INSERT INTO sumber_air VALUES(
@@ -98,7 +126,7 @@ function addWater($data, $file, $listUpaya)
         '$pH',
         '$kelayakan',
         '$jenis',
-        '$wilayah',
+        '$kabupaten',
         '$foto'
     )";
 
@@ -129,9 +157,12 @@ function updateWater($data, $file, $listUpaya)
 {
 
     global $conn;
+    global $mysqli;
     $id = $data['id_sumber_air'];   
     $namaSumberAir = $data['nama_sumber_air'];
-    $wilayah = $data['wilayah'];
+    // $provinsi = $_POST['provinsi'];
+    $kabupaten = $_POST['kabupaten'];
+    // $wilayah = $data['wilayah'];
     $jenis = $data['jenis_sumber_air'];
     $kondisi = $data['kondisi'];
     $suhu = $data['suhu'] / 10.0;
@@ -142,8 +173,15 @@ function updateWater($data, $file, $listUpaya)
 
     $sumberUpaya = readUpayaSumberAir($id);
 
-    
-    
+    // $query_str = "SELECT name FROM provinces WHERE id='$provinsi'";
+    // $data = mysqli_query($mysqli, $query_str);
+    // $provinsi_str = mysqli_fetch_array($data);
+
+    // $query_str = "SELECT name FROM regencies WHERE id='$kabupaten'";
+    // $data = mysqli_query($mysqli, $query_str);
+    // $kabupaten_str = mysqli_fetch_array($data);
+
+    // $wilayah = $kabupaten_str[0] . ', ' . $provinsi_str[0];
 
 
 
@@ -156,7 +194,7 @@ function updateWater($data, $file, $listUpaya)
         SET 
         nama_sumber_air = '$namaSumberAir', 
         foto_sumber_air = '$foto', 
-        id_wilayah = '$wilayah', 
+        id_kabupaten = '$kabupaten', 
         id_jenis_sumber_air = '$jenis',
         kondisi_sumber_air = '$kondisi', 
         suhu = '$suhu',
@@ -169,7 +207,7 @@ function updateWater($data, $file, $listUpaya)
     } else {
         $query = "UPDATE sumber_air SET 
         nama_sumber_air = '$namaSumberAir', 
-        id_wilayah = '$wilayah', 
+        id_kabupaten = '$kabupaten', 
         id_jenis_sumber_air = '$jenis',
         kondisi_sumber_air = '$kondisi',  
         suhu = '$suhu',
@@ -253,7 +291,7 @@ function readSumberAirKondisi(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air
-    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
     JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
     WHERE kondisi_sumber_air = 'Baik'
     ORDER BY 'nama_sumber_air' ASC";
@@ -267,7 +305,7 @@ function readSumberAirSuhu(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air
-    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
     JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
     WHERE suhu >= 10 && suhu <= 25
     ORDER BY 'nama_sumber_air' ASC";
@@ -281,7 +319,7 @@ function readSumberAirWarna(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air
-    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
     JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
     WHERE warna = 'Bening'
     ORDER BY 'nama_sumber_air' ASC";
@@ -295,7 +333,7 @@ function readSumberAirpH(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air
-    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
     JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
     WHERE pH >= 7 && ph <= 8
     ORDER BY 'nama_sumber_air' ASC";
@@ -309,7 +347,7 @@ function readSumberAirLayakMinum(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air
-    JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
+    -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
     JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
     WHERE layak_minum = 'Layak'
     ORDER BY 'nama_sumber_air' ASC";

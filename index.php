@@ -195,7 +195,7 @@ https://templatemo.com/tm-590-topic-listing
                 </div>
             </section>
 
-            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="padding: 0px; background-image: linear-gradient(0deg, #13547a 0%, #80d0c7 100%);">
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="padding: 0px; background-image: linear-gradient(0deg, #13547a 0%, #80d0c7 100%); margin-bottom: 20px;">
                 <div class="container">
                     <div class="row">
 
@@ -210,7 +210,7 @@ https://templatemo.com/tm-590-topic-listing
                                         
                                     </span>
 
-                                    <input type="text" name="keyword" type="search" class="form-control" id="keyword" placeholder="Cari di wilayah" aria-label="Search" style="margin-bottom: 0px">
+                                    <input type="text" name="keyword" type="search" class="form-control" id="keyword" placeholder="Cari di wilayah" aria-label="Search" style="margin-bottom: 0px; border: none;">
 
                                     <button type="submit" class="form-control" id="button-cari">Cari</button>
                                 </div>
@@ -224,8 +224,33 @@ https://templatemo.com/tm-590-topic-listing
 
             <section class="explore-section section-padding" id="section_2" style="padding-top: 0px">
                 <div class="container">
-                    <select id="filter-jenis" name="jenis_sumber_air" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
-                        <option value="" selected>Jenis Sumber Air (no filters)</option>
+                    <form action="" method="get">
+                        <div class="row">
+                        <div class="col-12 col-sm-3">
+                            <select id="filter-sort" name="filter-sort" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                                <label for="filter-sort">
+                                    <option value="id_sumber_air" selected>ID</option>
+                                    <option value="nama_sumber_air">A - Z</option>
+                                    <option value="suhu">Suhu</option>
+                                    <option value="pH">pH</option>
+                                </label>
+                            </select>
+                        </div>
+                        
+                        <div class="col-12 col-sm-3">
+                        <select id="filter-order" name="filter-order" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                            <label for="filter-order">
+                                <p>Order in</p>
+                                <option value="ASC">Ascending</option>
+                                <option value="DESC" selected>Descending</option>
+                                
+                            </label>
+                        </select>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                        <select id="filter-jenis" name="jenis_sumber_air" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                        <option value="" selected disabled>Jenis Sumber Air </option>
+                        <option value="" >All</option>
                         <?php
                         foreach($r_jenis as $jenis) {
                         ?>
@@ -233,8 +258,41 @@ https://templatemo.com/tm-590-topic-listing
                         <?php  
                         }
                         ?>
+                    
+                        </select>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                        <select id="filter-kondisi" name="filter-kondisi" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                            <label for="filter-kondisi">
+                                <option value="" selected disabled>Kondisi Sumber Air</option>
+                                <option value="Baik">Baik</option>
+                                <option value="Rusak Sedang" >Rusak Sedang</option>
+                                <option value="Rusak Parah" >Rusak Parah</option>
+                                
+                            </label>
+                        </select>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"></div>
+                        <div class="col-12 col-sm-1"><button type="reset" id="filter-reset" class="btn btn-danger ">Reset Filters</button></div>
+                        <div class="col-12 col-sm-1"><button type="button" id="filter-apply" class="btn btn-success ">Apply Filters</button></div>
                         
-                     </select>
+                        
+
+                    </div>
+
+                    </form>
+                    
                     
                     <div class="row">
 
@@ -296,15 +354,17 @@ https://templatemo.com/tm-590-topic-listing
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
+                                                            <h6 class="mb-1"><?=$sumberAir['nama_wilayah']?></h6>
 
-                                                            <p class="mb-0"><?=$sumberAir['kondisi_sumber_air']?></p>
+                                                            <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
+                                                            <p class="mb-1">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>
                                                         </div>
 
-                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                        <span class="badge bg-design rounded-pill ms-auto"><?=$sumberAir['id_sumber_air']?></span>
                                                     </div>
-                                                    <div class="image-wrapper">
-                                                        <img class="img-fluid" src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="" style="border-radius: 20px;">
-                                                    </div>
+                                                    <!-- <div class="image-wrapper"> -->
+                                                        <img class="img-fluid " src="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>" class="custom-block-image img-fluid" alt="" style="border-radius: 20px;">
+                                                    <!-- </div> -->
                                                 </a>
                                             </div>
                                         </div>

@@ -1,75 +1,63 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 05:19 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+/*
+Navicat MySQL Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+Source Server         : koneksi01
+Source Server Version : 50505
+Source Host           : localhost:3306
+Source Database       : db_water
 
+Target Server Type    : MYSQL
+Target Server Version : 50505
+File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+Date: 2023-06-02 15:07:12
+*/
 
---
--- Database: `db_water`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `admins`
+-- ----------------------------
+DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
-  `id_admin` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `password` varchar(300) NOT NULL,
+  PRIMARY KEY (`id_admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `admins`
---
+-- ----------------------------
+-- Records of admins
+-- ----------------------------
+INSERT INTO `admins` VALUES ('1', 'jidan', '$argon2i$v=19$m=65536,t=4,p=1$NUdvL2ZkY3pOWERqazZKRQ$FVSZsWGPJwVm4yqQ3JZqWMS5HGAazS2GXpR/Q0laLwA');
+INSERT INTO `admins` VALUES ('2', 'wildan', '$argon2i$v=19$m=65536,t=4,p=1$RWQ1MkJBaXNkL0psSWRVNw$h3Or1UEbeDIfLrtnj2jUiBFb0ng49Zhddk85dxhyEeU');
+INSERT INTO `admins` VALUES ('3', 'danwil', '$argon2i$v=19$m=65536,t=4,p=1$V0ZzOUptL25JbWxUTDZxQg$uX+jjkxMydu8dff43fDa5WicTsWEaEjqyi+xlVOc+y4');
+INSERT INTO `admins` VALUES ('4', 'halo', '$argon2i$v=19$m=65536,t=4,p=1$NmQyVDlqOWsvcUwxcXhnMQ$anW3OiyMCb3f23herUh1owtKGK+4SAMMZZXRb6Q3XeI');
 
-INSERT INTO `admins` (`id_admin`, `username`, `password`) VALUES
-(1, 'jidan', '$argon2i$v=19$m=65536,t=4,p=1$NUdvL2ZkY3pOWERqazZKRQ$FVSZsWGPJwVm4yqQ3JZqWMS5HGAazS2GXpR/Q0laLwA');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jenis_sumber_air`
---
-
+-- ----------------------------
+-- Table structure for `jenis_sumber_air`
+-- ----------------------------
+DROP TABLE IF EXISTS `jenis_sumber_air`;
 CREATE TABLE `jenis_sumber_air` (
-  `id_jenis_sumber_air` int(11) NOT NULL,
-  `nama_jenis_sumber_air` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_jenis_sumber_air` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_jenis_sumber_air` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_jenis_sumber_air`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `jenis_sumber_air`
---
+-- ----------------------------
+-- Records of jenis_sumber_air
+-- ----------------------------
+INSERT INTO `jenis_sumber_air` VALUES ('1', 'Mata air');
+INSERT INTO `jenis_sumber_air` VALUES ('2', 'Sumur');
+INSERT INTO `jenis_sumber_air` VALUES ('3', 'Waduk');
+INSERT INTO `jenis_sumber_air` VALUES ('4', 'Danau');
+INSERT INTO `jenis_sumber_air` VALUES ('5', 'Sungai');
 
-INSERT INTO `jenis_sumber_air` (`id_jenis_sumber_air`, `nama_jenis_sumber_air`) VALUES
-(1, 'Mata air'),
-(2, 'Sumur'),
-(3, 'Waduk'),
-(4, 'Danau'),
-(5, 'Sungai');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `log_delete_sumber_air`
---
-
+-- ----------------------------
+-- Table structure for `log_delete_sumber_air`
+-- ----------------------------
+DROP TABLE IF EXISTS `log_delete_sumber_air`;
 CREATE TABLE `log_delete_sumber_air` (
-  `id_log_delete_sumber_air` int(11) NOT NULL,
+  `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT,
   `id_sumber_air` int(11) NOT NULL,
   `nama_sumber_air` varchar(100) NOT NULL,
   `kondisi_sumber_air` varchar(100) NOT NULL,
@@ -80,24 +68,21 @@ CREATE TABLE `log_delete_sumber_air` (
   `id_jenis_sumber_air` int(11) NOT NULL,
   `id_wilayah` int(11) NOT NULL,
   `foto_sumber_air` varchar(100) NOT NULL,
-  `tgl_delete` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `tgl_delete` date NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_log_delete_sumber_air`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `log_delete_sumber_air`
---
+-- ----------------------------
+-- Records of log_delete_sumber_air
+-- ----------------------------
+INSERT INTO `log_delete_sumber_air` VALUES ('4', '15', 'test123', 'Baik', '25', 'Keruh', '8.0', 'Layak', '1', '2', 'default.png', '2023-06-01');
 
-INSERT INTO `log_delete_sumber_air` (`id_log_delete_sumber_air`, `id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`, `tgl_delete`) VALUES
-(4, 15, 'test123', 'Baik', '25', 'Keruh', '8.0', 'Layak', 1, 2, 'default.png', '2023-06-01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `log_update_sumber_air`
---
-
+-- ----------------------------
+-- Table structure for `log_update_sumber_air`
+-- ----------------------------
+DROP TABLE IF EXISTS `log_update_sumber_air`;
 CREATE TABLE `log_update_sumber_air` (
-  `id_log_update_sumber_air` int(11) NOT NULL,
+  `id_log_update_sumber_air` int(11) NOT NULL AUTO_INCREMENT,
   `id_sumber_air` int(11) DEFAULT NULL,
   `old_nama_sumber_air` varchar(100) DEFAULT NULL,
   `old_kondisi_sumber_air` varchar(100) DEFAULT NULL,
@@ -108,17 +93,47 @@ CREATE TABLE `log_update_sumber_air` (
   `old_id_jenis_sumber_air` int(11) DEFAULT NULL,
   `old_id_wilayah` int(11) DEFAULT NULL,
   `old_foto_sumber_air` varchar(100) DEFAULT NULL,
-  `tgl_update` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `tgl_update` date DEFAULT NULL,
+  PRIMARY KEY (`id_log_update_sumber_air`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of log_update_sumber_air
+-- ----------------------------
+INSERT INTO `log_update_sumber_air` VALUES ('5', '1', 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', '3', '0', 'foto_waduk_jatiluhur.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('6', '2', 'Sungai Citarum', 'Baik', '28', 'Bening', '7.3', 'Layak', '5', '0', 'foto_sungai_citarum.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('7', '3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_aqua_cipondok.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('8', '4', 'Sungai Ciliwung', 'Rusak Sedang', '29', 'Keruh', '7.9', 'Tidak', '5', '0', 'foto_sungai_ciliwung.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('9', '5', 'Mata Air Lubuk Bonta', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_lubuk_bonta.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('10', '6', 'Waduk Sermo', 'Rusak Sedang', '29', 'Keruh', '7.7', 'Tidak', '3', '0', 'foto_waduk_sermo.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('11', '7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '0', 'foto_sumur_abadi_semarang.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('12', '8', 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', '4', '0', 'foto_danau_cermin_lamaru.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('13', '9', 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', '4', '0', 'foto_danau_batur_bali.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('14', '16', 'Haloa', 'Rusak Parah', '25', 'Bening', '7.0', 'Layak', '3', '0', 'default.png', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('15', '10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '0', 'foto_sungai_bengawan_solo.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('16', '17', 'Halo', 'Rusak Sedang', '14', 'Keruh', '6.4', 'Tidak', '3', '0', 'default.png', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('17', '1', 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', '3', '0', 'foto_waduk_jatiluhur.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('18', '2', 'Sungai Citarum', 'Baik', '28', 'Bening', '7.3', 'Layak', '5', '0', 'foto_sungai_citarum.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('19', '3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_aqua_cipondok.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('20', '4', 'Sungai Ciliwung', 'Rusak Sedang', '29', 'Keruh', '7.9', 'Tidak', '5', '0', 'foto_sungai_ciliwung.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('21', '5', 'Mata Air Lubuk Bonta', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_lubuk_bonta.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('22', '6', 'Waduk Sermo', 'Rusak Sedang', '29', 'Keruh', '7.7', 'Tidak', '3', '0', 'foto_waduk_sermo.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('23', '7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '0', 'foto_sumur_abadi_semarang.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('24', '17', 'Halo', 'Rusak Sedang', '14', 'Keruh', '6.4', 'Tidak', '3', '0', 'default.png', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('25', '16', 'Haloa', 'Rusak Parah', '25', 'Bening', '7.0', 'Layak', '3', '0', 'default.png', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('26', '10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '0', 'foto_sungai_bengawan_solo.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('27', '9', 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', '4', '0', 'foto_danau_batur_bali.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('28', '8', 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', '4', '0', 'foto_danau_cermin_lamaru.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('34', '3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_aqua_cipondok.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('35', '3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '0', 'foto_mata_air_aqua_cipondok.jpg', '2023-06-02');
+INSERT INTO `log_update_sumber_air` VALUES ('36', '18', 'testb', 'Rusak Sedang', '25', 'Keruh', '7.0', 'Tidak', '4', '0', 'default.png', '2023-06-02');
 
---
--- Table structure for table `sumber_air`
---
-
+-- ----------------------------
+-- Table structure for `sumber_air`
+-- ----------------------------
+DROP TABLE IF EXISTS `sumber_air`;
 CREATE TABLE `sumber_air` (
-  `id_sumber_air` int(11) NOT NULL,
+  `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT,
   `nama_sumber_air` varchar(100) NOT NULL,
   `kondisi_sumber_air` varchar(100) DEFAULT NULL,
   `suhu` decimal(10,0) NOT NULL,
@@ -126,269 +141,122 @@ CREATE TABLE `sumber_air` (
   `pH` decimal(10,1) NOT NULL,
   `layak_minum` varchar(10) NOT NULL,
   `id_jenis_sumber_air` int(11) NOT NULL,
-  `id_wilayah` int(11) NOT NULL,
-  `foto_sumber_air` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_kabupaten` int(4) NOT NULL,
+  `foto_sumber_air` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_sumber_air`),
+  KEY `id_jenis_sumber_air` (`id_jenis_sumber_air`),
+  KEY `kabupaten` (`id_kabupaten`),
+  CONSTRAINT `jenis_sumber_air` FOREIGN KEY (`id_jenis_sumber_air`) REFERENCES `jenis_sumber_air` (`id_jenis_sumber_air`),
+  CONSTRAINT `kabupaten` FOREIGN KEY (`id_kabupaten`) REFERENCES `wilayah_indonesia`.`regencies` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `sumber_air`
---
+-- ----------------------------
+-- Records of sumber_air
+-- ----------------------------
+INSERT INTO `sumber_air` VALUES ('1', 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', '3', '3273', 'foto_waduk_jatiluhur.jpg');
+INSERT INTO `sumber_air` VALUES ('2', 'Sungai Citarum', 'Baik', '28', 'Bening', '7.3', 'Layak', '5', '3273', 'foto_sungai_citarum.jpg');
+INSERT INTO `sumber_air` VALUES ('3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '3213', 'foto_mata_air_aqua_cipondok.jpg');
+INSERT INTO `sumber_air` VALUES ('4', 'Sungai Ciliwung', 'Rusak Sedang', '29', 'Keruh', '7.9', 'Tidak', '5', '3273', 'foto_sungai_ciliwung.jpg');
+INSERT INTO `sumber_air` VALUES ('5', 'Mata Air Lubuk Bonta', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '3273', 'foto_mata_air_lubuk_bonta.jpg');
+INSERT INTO `sumber_air` VALUES ('6', 'Waduk Sermo', 'Rusak Sedang', '29', 'Keruh', '7.7', 'Tidak', '3', '3273', 'foto_waduk_sermo.jpg');
+INSERT INTO `sumber_air` VALUES ('7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '3273', 'foto_sumur_abadi_semarang.jpg');
+INSERT INTO `sumber_air` VALUES ('8', 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', '4', '3273', 'foto_danau_cermin_lamaru.jpg');
+INSERT INTO `sumber_air` VALUES ('9', 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', '4', '3273', 'foto_danau_batur_bali.jpg');
+INSERT INTO `sumber_air` VALUES ('10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '3273', 'foto_sungai_bengawan_solo.jpg');
+INSERT INTO `sumber_air` VALUES ('16', 'Haloa', 'Rusak Parah', '25', 'Bening', '7.0', 'Layak', '3', '3273', 'default.png');
+INSERT INTO `sumber_air` VALUES ('17', 'Halo', 'Rusak Sedang', '14', 'Keruh', '6.4', 'Tidak', '3', '3273', 'default.png');
+INSERT INTO `sumber_air` VALUES ('18', 'testb', 'Rusak Sedang', '25', 'Keruh', '7.0', 'Tidak', '4', '5104', 'default.png');
 
-INSERT INTO `sumber_air` (`id_sumber_air`, `nama_sumber_air`, `kondisi_sumber_air`, `suhu`, `warna`, `pH`, `layak_minum`, `id_jenis_sumber_air`, `id_wilayah`, `foto_sumber_air`) VALUES
-(1, 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', 3, 3, 'foto_waduk_jatiluhur.jpg'),
-(2, 'Sungai Citarum', 'Baik', '28', 'Bening', '7.3', 'Layak', 5, 2, 'foto_sungai_citarum.jpg'),
-(3, 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', 1, 1, 'foto_mata_air_aqua_cipondok.jpg'),
-(4, 'Sungai Ciliwung', 'Rusak Sedang', '29', 'Keruh', '7.9', 'Tidak', 5, 4, 'foto_sungai_ciliwung.jpg'),
-(5, 'Mata Air Lubuk Bonta', 'Baik', '26', 'Bening', '7.4', 'Layak', 1, 7, 'foto_mata_air_lubuk_bonta.jpg'),
-(6, 'Waduk Sermo', 'Rusak Sedang', '29', 'Keruh', '7.7', 'Tidak', 3, 5, 'foto_waduk_sermo.jpg'),
-(7, 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', 2, 6, 'foto_sumur_abadi_semarang.jpg'),
-(8, 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', 4, 8, 'foto_danau_cermin_lamaru.jpg'),
-(9, 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', 4, 9, 'foto_danau_batur_bali.jpg'),
-(10, 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', 5, 10, 'foto_sungai_bengawan_solo.jpg');
-
---
--- Triggers `sumber_air`
---
-DELIMITER $$
-CREATE TRIGGER `tr_log_delete_sumber_air` BEFORE DELETE ON `sumber_air` FOR EACH ROW BEGIN
- 		INSERT INTO log_delete_sumber_air (id_sumber_air, nama_sumber_air, kondisi_sumber_air, suhu, warna, pH, layak_minum, id_jenis_sumber_air, id_wilayah, foto_sumber_air, tgl_delete) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
- END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `tr_log_update_sumber_air` BEFORE UPDATE ON `sumber_air` FOR EACH ROW BEGIN
- 		INSERT INTO log_update_sumber_air (id_sumber_air,old_nama_sumber_air,old_kondisi_sumber_air,old_suhu,old_warna,old_pH,old_layak_minum,old_id_jenis_sumber_air,old_id_wilayah,old_foto_sumber_air, tgl_update) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, OLD.id_wilayah, OLD.foto_sumber_air, NOW());
- END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sumber_air_upaya_peningkatan`
---
-
+-- ----------------------------
+-- Table structure for `sumber_air_upaya_peningkatan`
+-- ----------------------------
+DROP TABLE IF EXISTS `sumber_air_upaya_peningkatan`;
 CREATE TABLE `sumber_air_upaya_peningkatan` (
-  `id_sumber_air_upaya_peningkatan` int(11) NOT NULL,
+  `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT,
   `id_sumber_air` int(11) NOT NULL,
-  `id_upaya_peningkatan_ketersediaan_air` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_upaya_peningkatan_ketersediaan_air` int(11) NOT NULL,
+  PRIMARY KEY (`id_sumber_air_upaya_peningkatan`),
+  KEY `id_sumber_air` (`id_sumber_air`),
+  KEY `id_upaya_peningkatan` (`id_upaya_peningkatan_ketersediaan_air`),
+  CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`) ON DELETE CASCADE,
+  CONSTRAINT `id_upaya_peningkatan` FOREIGN KEY (`id_upaya_peningkatan_ketersediaan_air`) REFERENCES `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `sumber_air_upaya_peningkatan`
---
+-- ----------------------------
+-- Records of sumber_air_upaya_peningkatan
+-- ----------------------------
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('1', '1', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('2', '1', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('3', '1', '7');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('4', '2', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('5', '2', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('6', '2', '7');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('10', '4', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('11', '4', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('12', '4', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('13', '4', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('14', '5', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('15', '5', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('16', '6', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('17', '6', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('18', '6', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('19', '7', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('20', '7', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('21', '7', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('22', '7', '6');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('23', '8', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('24', '8', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('25', '8', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('26', '9', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('27', '9', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('28', '9', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('45', '10', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('46', '10', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('47', '10', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('52', '16', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('53', '16', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('54', '16', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('55', '16', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('56', '16', '6');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('57', '17', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('58', '17', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('59', '17', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('60', '17', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('61', '17', '7');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('66', '3', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('67', '3', '4');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('68', '3', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('69', '18', '7');
 
-INSERT INTO `sumber_air_upaya_peningkatan` (`id_sumber_air_upaya_peningkatan`, `id_sumber_air`, `id_upaya_peningkatan_ketersediaan_air`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 7),
-(4, 2, 1),
-(5, 2, 2),
-(6, 2, 7),
-(7, 3, 2),
-(8, 3, 4),
-(9, 3, 5),
-(10, 4, 1),
-(11, 4, 2),
-(12, 4, 3),
-(13, 4, 4),
-(14, 5, 4),
-(15, 5, 5),
-(16, 6, 2),
-(17, 6, 3),
-(18, 6, 4),
-(19, 7, 1),
-(20, 7, 2),
-(21, 7, 5),
-(22, 7, 6),
-(23, 8, 1),
-(24, 8, 2),
-(25, 8, 5),
-(26, 9, 2),
-(27, 9, 3),
-(28, 9, 4),
-(45, 10, 2),
-(46, 10, 3),
-(47, 10, 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `upaya_peningkatan_ketersediaan_air`
---
-
+-- ----------------------------
+-- Table structure for `upaya_peningkatan_ketersediaan_air`
+-- ----------------------------
+DROP TABLE IF EXISTS `upaya_peningkatan_ketersediaan_air`;
 CREATE TABLE `upaya_peningkatan_ketersediaan_air` (
-  `id_upaya_ketersediaan_air` int(11) NOT NULL,
-  `nama_upaya` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_upaya_ketersediaan_air` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_upaya` text NOT NULL,
+  PRIMARY KEY (`id_upaya_ketersediaan_air`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `upaya_peningkatan_ketersediaan_air`
---
-
-INSERT INTO `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`, `nama_upaya`) VALUES
-(1, ' Memberikan kesadaran terhadap masyarakat tentang arti lingkungan hidup sehingga manusia lebih mencintai lingkungan hidupnya.'),
-(2, 'Pengawasan terhadap penggunaan jenis-jenis zat kimia dan pestisida karena dapat menimbulkan pencemaran air.'),
-(3, 'Memperluas gerakan penghijauan.'),
-(4, 'Menempatkan daerah industri atau tempat-tempat pabrik jaug dari sekitar daerah perumahan-pemukiman.'),
-(5, 'Keamanan terhadap air minum harus mendapat perhatian yang khusus, baik dari pemrintah maupun kita sebagai warga masyarakat.'),
-(6, 'Menggunakan air bersih dengan bijaksana atau seperlunya saja'),
-(7, 'Tidak membuang sampah sembarangan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wilayah`
---
-
-CREATE TABLE `wilayah` (
-  `id_wilayah` int(11) NOT NULL,
-  `nama_wilayah` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `wilayah`
---
-
-INSERT INTO `wilayah` (`id_wilayah`, `nama_wilayah`) VALUES
-(1, 'Subang'),
-(2, 'Bandung'),
-(3, 'Purwakarta'),
-(4, 'Jakarta'),
-(5, 'Yogyakarta'),
-(6, 'Semarang'),
-(7, 'Padang'),
-(8, 'Balikpapan'),
-(9, 'Bali'),
-(10, 'Solo');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id_admin`);
-
---
--- Indexes for table `jenis_sumber_air`
---
-ALTER TABLE `jenis_sumber_air`
-  ADD PRIMARY KEY (`id_jenis_sumber_air`);
-
---
--- Indexes for table `log_delete_sumber_air`
---
-ALTER TABLE `log_delete_sumber_air`
-  ADD PRIMARY KEY (`id_log_delete_sumber_air`);
-
---
--- Indexes for table `log_update_sumber_air`
---
-ALTER TABLE `log_update_sumber_air`
-  ADD PRIMARY KEY (`id_log_update_sumber_air`);
-
---
--- Indexes for table `sumber_air`
---
-ALTER TABLE `sumber_air`
-  ADD PRIMARY KEY (`id_sumber_air`),
-  ADD KEY `id_jenis_sumber_air` (`id_jenis_sumber_air`),
-  ADD KEY `wilayah` (`id_wilayah`);
-
---
--- Indexes for table `sumber_air_upaya_peningkatan`
---
-ALTER TABLE `sumber_air_upaya_peningkatan`
-  ADD PRIMARY KEY (`id_sumber_air_upaya_peningkatan`),
-  ADD KEY `id_sumber_air` (`id_sumber_air`),
-  ADD KEY `id_upaya_peningkatan` (`id_upaya_peningkatan_ketersediaan_air`);
-
---
--- Indexes for table `upaya_peningkatan_ketersediaan_air`
---
-ALTER TABLE `upaya_peningkatan_ketersediaan_air`
-  ADD PRIMARY KEY (`id_upaya_ketersediaan_air`);
-
---
--- Indexes for table `wilayah`
---
-ALTER TABLE `wilayah`
-  ADD PRIMARY KEY (`id_wilayah`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `jenis_sumber_air`
---
-ALTER TABLE `jenis_sumber_air`
-  MODIFY `id_jenis_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `log_delete_sumber_air`
---
-ALTER TABLE `log_delete_sumber_air`
-  MODIFY `id_log_delete_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `log_update_sumber_air`
---
-ALTER TABLE `log_update_sumber_air`
-  MODIFY `id_log_update_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `sumber_air`
---
-ALTER TABLE `sumber_air`
-  MODIFY `id_sumber_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `sumber_air_upaya_peningkatan`
---
-ALTER TABLE `sumber_air_upaya_peningkatan`
-  MODIFY `id_sumber_air_upaya_peningkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT for table `upaya_peningkatan_ketersediaan_air`
---
-ALTER TABLE `upaya_peningkatan_ketersediaan_air`
-  MODIFY `id_upaya_ketersediaan_air` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `wilayah`
---
-ALTER TABLE `wilayah`
-  MODIFY `id_wilayah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `sumber_air`
---
-ALTER TABLE `sumber_air`
-  ADD CONSTRAINT `sumber_air_ibfk_1` FOREIGN KEY (`id_jenis_sumber_air`) REFERENCES `jenis_sumber_air` (`id_jenis_sumber_air`),
-  ADD CONSTRAINT `wilayah` FOREIGN KEY (`id_wilayah`) REFERENCES `wilayah` (`id_wilayah`);
-
---
--- Constraints for table `sumber_air_upaya_peningkatan`
---
-ALTER TABLE `sumber_air_upaya_peningkatan`
-  ADD CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`) ON DELETE CASCADE,
-  ADD CONSTRAINT `id_upaya_peningkatan` FOREIGN KEY (`id_upaya_peningkatan_ketersediaan_air`) REFERENCES `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`) ON DELETE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- ----------------------------
+-- Records of upaya_peningkatan_ketersediaan_air
+-- ----------------------------
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('1', ' Memberikan kesadaran terhadap masyarakat tentang arti lingkungan hidup sehingga manusia lebih mencintai lingkungan hidupnya.');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('2', 'Pengawasan terhadap penggunaan jenis-jenis zat kimia dan pestisida karena dapat menimbulkan pencemaran air.');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('3', 'Memperluas gerakan penghijauan.');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('4', 'Menempatkan daerah industri atau tempat-tempat pabrik jaug dari sekitar daerah perumahan-pemukiman.');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('5', 'Keamanan terhadap air minum harus mendapat perhatian yang khusus, baik dari pemrintah maupun kita sebagai warga masyarakat.');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('6', 'Menggunakan air bersih dengan bijaksana atau seperlunya saja');
+INSERT INTO `upaya_peningkatan_ketersediaan_air` VALUES ('7', 'Tidak membuang sampah sembarangan');
+DELIMITER ;;
+CREATE TRIGGER `tr_log_update_sumber_air` BEFORE UPDATE ON `sumber_air` FOR EACH ROW BEGIN
+ 		INSERT INTO log_update_sumber_air (id_sumber_air, old_nama_sumber_air, old_kondisi_sumber_air, old_suhu, old_warna, old_pH, old_layak_minum, old_id_jenis_sumber_air, old_id_wilayah, old_foto_sumber_air, tgl_update) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, 0, OLD.foto_sumber_air, NOW());
+ END
+;;
+DELIMITER ;
+DELIMITER ;;
+CREATE TRIGGER `tr_log_delete_sumber_air` BEFORE DELETE ON `sumber_air` FOR EACH ROW BEGIN
+ 		INSERT INTO log_delete_sumber_air (id_sumber_air, nama_sumber_air, kondisi_sumber_air, suhu, warna, pH, layak_minum, id_jenis_sumber_air, id_wilayah, foto_sumber_air, tgl_delete) VALUES( OLD.id_sumber_air, OLD.nama_sumber_air, OLD.kondisi_sumber_air, OLD.suhu, OLD.warna, OLD.pH, OLD.layak_minum, OLD.id_jenis_sumber_air, 0, OLD.foto_sumber_air, NOW());
+ END
+;;
+DELIMITER ;

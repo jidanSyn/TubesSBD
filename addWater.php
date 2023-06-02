@@ -7,7 +7,7 @@
     $listSumberAir = readSumberAir();
 
     $r_jenis = readTable('jenis_sumber_air');
-    $r_wilayah = readTable('wilayah');
+    // $r_wilayah = readTable('wilayah');
     $r_upaya = readTable('upaya_peningkatan_ketersediaan_air');
     // echo '<pre>';
     // print_r($r_jenis);
@@ -69,6 +69,8 @@ if (isset($_POST['submit-add'])) {
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> -->
 <!--
 
@@ -83,11 +85,11 @@ https://templatemo.com/tm-590-topic-listing
 
         <main>
 
-            <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>HydroCulus</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -101,38 +103,16 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="index.php">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_2">Browse Topics</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_3">How it works</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_4">FAQs</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link click-scroll" href="index.php#section_5">Contact</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.php">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item active" href="contact.php">Contact Form</a></li>
-                                </ul>
+                                <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
-                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <a href="login.php" class="navbar-icon bi-person smoothscroll"></a>
                         </div>
                     </div>
                 </div>
@@ -148,11 +128,11 @@ https://templatemo.com/tm-590-topic-listing
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Homepage</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">Contact Form</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add Sumber Air</li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">Contact Form</h2>
+                            <h2 class="text-white">Add Sumber Air</h2>
                         </div>
 
                     </div>
@@ -180,7 +160,7 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <!-- <div class="col-lg-4 col-md-6 col-12">
                                         <div class="form-floating">
                                             <select name="wilayah" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" required>
                                                 <option value="" disabled selected>Wilayah</option>
@@ -193,11 +173,29 @@ https://templatemo.com/tm-590-topic-listing
                                                 ?>
                                             </select>
                                         </div>
+                                    </div> -->
+
+                                    <h6>Wilayah</h6>
+                                    <div class="col-lg-6 col-md-6 col-12"> 
+                                        <div class="form-floating">
+                                            <select name="provinsi" id="provinsi" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
+                                                    <option disabled selected>Provinsi</option>
+                                            
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    
+                                    <div class="col-lg-6 col-md-6 col-12"> 
+                                        <div class="form-floating">
+                                            <select name="kabupaten" id="kabupaten" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
+                                                    <option disabled selected>Kabupaten</option>
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                    <div class="col-lg-4 col-md-6 col-12"> 
+                                    <!-- <br> -->
+                                    <div class="col-lg-6 col-md-6 col-12"> 
                                         <div class="form-floating">
                                             <select name="jenis_sumber_air" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example">
                                                     <option disabled selected>Jenis Sumber Air</option>
@@ -212,7 +210,7 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-floating">
                                             <select name="kondisi" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" required>
                                                 <option disabled selected>Kondisi Sumber Air</option>
@@ -465,6 +463,74 @@ https://templatemo.com/tm-590-topic-listing
             reader.readAsDataURL(selectedFile);
             }
         </script>
+
+            <!-- skrip bootstrap dan script jquery -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// hilangkan label dan tag select yang belum dibutuhkan
+			// $("#lbl_kabupaten").hide();
+			$("#kabupaten").hide();
+			$("#kecamatan").hide();
+			// $("#lbl_kecamatan").hide();
+			// $("#kelurahan").hide();
+			// $("#lbl_kelurahan").hide();
+			
+			// menambahkan option ke elemen yang memiliki id = “provinsi” dan mengosongkan element yang memiliki id = “kabupaten”.
+			$("#provinsi").append('<option value="">Pilih</option>');
+			$("#kabupaten").html('');
+
+			// implementasi kode jquery
+			url = 'get_provinsi.php';
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				success: function(result) {
+					// apa yang akan dilakukan pada data json yang sudah digenerate
+					for(var i=0; i<result.length; i++) 
+						$("#provinsi").append('<option value="' + result[i].id_prov + '">' + result[i].nama + '</option>');
+				}
+			});
+		});
+
+		$("#provinsi").change(function() {
+			$("#lbl_kabupaten").slideDown();
+			$("#kabupaten").slideDown();
+
+			// fetch id provinsi
+			var id_prov = $("#provinsi").val();
+			// masukkan id provinsi ke url kabupaten
+			var url = 'get_kabupaten.php?id_prov=' + id_prov;
+
+			$("#kabupaten").html('');
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				success: function(result) {
+					$("#kabupaten").append('<option value="">Pilih</option>');
+					for (var i = 0; i < result.length; i++) {
+							// apa yang akan dilakukan pada data json yang sudah digenerate
+							$("#kabupaten").append('<option value="' + result[i].id_kab + '">' + result[i].nama + '</option>');
+					}
+				}
+			});
+		});
+
+		// jika nilai/value dari element yang memiliki id = “provinsi” muncul kecamatan dan kelurahan
+		$("#kabupaten").change(function() {
+			$("#kecamatan").slideDown();
+			$("#lbl_kecamatan").slideDown();
+			$("#kelurahan").slideDown();
+			$("#lbl_kelurahan").slideDown();
+		})
+	</script>
+
+
         <!-- JAVASCRIPT FILES -->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>

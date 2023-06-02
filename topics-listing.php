@@ -236,7 +236,7 @@ https://templatemo.com/tm-590-topic-listing
                                         <div>
                                             <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
 
-                                            <h6 class="mb-1"><?=$sumberAir['nama_wilayah']?></h6>
+                                            <h6 class="mb-1"><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></h6>
 
                                             <br>
 

@@ -229,7 +229,8 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-12 col-sm-3">
                             <select id="filter-sort" name="filter-sort" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                                 <label for="filter-sort">
-                                    <option value="id_sumber_air" selected>ID</option>
+                                    <option value="id_sumber_air" selected disabled>Sort by</option>
+                                    <option value="id_sumber_air" >ID</option>
                                     <option value="nama_sumber_air">A - Z</option>
                                     <option value="suhu">Suhu</option>
                                     <option value="pH">pH</option>
@@ -241,8 +242,9 @@ https://templatemo.com/tm-590-topic-listing
                         <select id="filter-order" name="filter-order" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                             <label for="filter-order">
                                 <p>Order in</p>
+                                <option value="DESC" selected disabled>Order by</option>
                                 <option value="ASC">Ascending</option>
-                                <option value="DESC" selected>Descending</option>
+                                <option value="DESC" >Descending</option>
                                 
                             </label>
                         </select>

@@ -28,7 +28,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Detail Page</title>
+        <title>Sumber Air</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">

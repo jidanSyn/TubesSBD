@@ -22,28 +22,60 @@
 $(document).ready(function(){
 
     let jenis = '';
+    let kondisi = '';
+    let sort = 'id_sumber_air';
+    let order = 'ASC';
     let keyword = '';
-    $('#filter-jenis').on('change', function () {
-        jenis = this.value;
 
-        $.get('ajax/search.php?keyword=' + keyword + '&jenis=' + jenis, function (data) {
-            $('#active-search').html(data);
-        });
+    $('#filter-sort').on('change reset', function () {
+        sort = this.value;
         
-    })
+    });
+
+    $('#filter-order').on('change reset', function () {
+        order = this.value;
+    });
+
+    $('#filter-jenis').on('change reset', function () {
+        jenis = this.value;
+        
+    });
+
+    $('#filter-kondisi').on('change reset', function () {
+        kondisi = this.value;
+
+    });
+
     
     // console.log('ok lah');
     $('#keyword').on('keyup', function() {
         // jquery compact
         // $('#active-search').load('ajax/search.php?keyword=' + $('#keyword').val());
-        console.log(jenis);
+        // console.log(jenis);
         keyword = this.value;
         
 
         // jquery flexible
-        $.get('ajax/search.php?keyword=' + keyword + '&jenis=' + jenis, function(data) {
+        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });
+    });
+
+    $('#filter-reset').on('click', function () {
+        jenis = '';
+        kondisi = '';
+        sort = 'id_sumber_air';
+        order = 'ASC';
+        
+
+    });
+
+    $('#filter-apply').on('click', function () {
+        
+        $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
+            $('#active-search').html(data);
+        });
+
     });
 });
 

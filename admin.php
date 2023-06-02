@@ -32,7 +32,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Detail Page</title>
+        <title>Admin</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,6 +105,7 @@ https://templatemo.com/tm-590-topic-listing
                             </nav>
 
                             <h2 class="text-white">Hanya untuk admin dan orang yang memiliki akses</h2>
+                            <a type="button" class="btn btn-danger" href="logout.php">Log Out</a>
                         </div>
 
                         <div class="col-lg-5 col-12">

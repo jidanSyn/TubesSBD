@@ -1,12 +1,16 @@
 <?php
     include('function.php');
+    global $conn;
+    global $conn2;
     $listSumberAir = readSumberAir();
     $listSumberAirKondisi = readSumberAirKondisi();
     $listSumberAirSuhu = readSumberAirSuhu();
     $listSumberAirWarna = readSumberAirWarna();
     $listSumberAirpH = readSumberAirpH();
     $listSumberAirLayakMinum = readSumberAirLayakMinum();
-    $r_jenis = readTable('jenis_sumber_air');
+    $r_jenis = readTable($conn, 'jenis_sumber_air');
+    $r_provinces = readTable($conn2, 'provinces');
+    $r_regencies = readTable($conn2, 'regencies');
 ?>
 
 <!doctype html>
@@ -158,6 +162,8 @@ https://templatemo.com/tm-590-topic-listing
                                         <div>
                                             <h5 class="text-white mb-2">Bisa ngapain aja?</h5>
 
+
+                                            
                                             <p class="text-white">Kalian bisa mencari daerah yang memiliki sumber air dan juga karakteristiknya. Mengetahui kondisinya? Bisa. Suhunya? Bisa dong. Warna dan pH-nya? Tentu saja bisa. Kalian juga bisa mencari hal lainnya yang berkaitan dengan sumber air di Indonesia :)</p>
 
                                             <a href="topics-listing.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
@@ -226,7 +232,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="container">
                     <form action="" method="get">
                         <div class="row">
-                        <div class="col-12 col-sm-3">
+                        <div class="col-12 col-sm-2">
                             <select id="filter-sort" name="filter-sort" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                                 <label for="filter-sort">
                                     <option value="id_sumber_air" selected disabled>Sort by</option>
@@ -238,18 +244,45 @@ https://templatemo.com/tm-590-topic-listing
                             </select>
                         </div>
                         
-                        <div class="col-12 col-sm-3">
+                        <div class="col-12 col-sm-2">
                         <select id="filter-order" name="filter-order" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                             <label for="filter-order">
                                 <p>Order in</p>
-                                <option value="DESC" selected disabled>Order by</option>
+                                <option value="DESC" selected disabled>Order in</option>
                                 <option value="ASC">Ascending</option>
                                 <option value="DESC" >Descending</option>
                                 
                             </label>
                         </select>
                         </div>
-                        <div class="col-12 col-sm-3">
+
+                        <div class="col-12 col-sm-2">
+                        <select id="filter-provinsi" name="provinsi_sumber_air" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                        <option value="" selected disabled>Provinsi</option>
+                        <option value="" >All</option>
+                        <?php
+                        foreach($r_provinces as $provinsi) {
+                        ?>
+                        <option value="<?=$provinsi['id']?>"> <?=$provinsi['id']?> - <?=$provinsi['provinces_name']?></option>
+                        <?php  
+                        }
+                        ?>
+                    
+                        </select>
+                        </div>
+
+                        
+                            <div id="regency" class="col-12 col-sm-2">
+                            <select id="filter-regency" name="regency_sumber_air" class="form-select mt-2"  style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
+                                <option id="regency-title" value="" selected disabled>Select Province First</option>
+                                
+                        
+                        
+                            </select>   
+                            </div>
+                        
+
+                        <div class="col-12 col-sm-2">
                         <select id="filter-jenis" name="jenis_sumber_air" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                         <option value="" selected disabled>Jenis Sumber Air </option>
                         <option value="" >All</option>
@@ -263,10 +296,11 @@ https://templatemo.com/tm-590-topic-listing
                     
                         </select>
                         </div>
-                        <div class="col-12 col-sm-3">
+                        <div class="col-12 col-sm-2">
                         <select id="filter-kondisi" name="filter-kondisi" class="form-select mt-2" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" >
                             <label for="filter-kondisi">
                                 <option value="" selected disabled>Kondisi Sumber Air</option>
+                                <option value="" >All</option>
                                 <option value="Baik">Baik</option>
                                 <option value="Rusak Sedang" >Rusak Sedang</option>
                                 <option value="Rusak Parah" >Rusak Parah</option>
@@ -356,7 +390,7 @@ https://templatemo.com/tm-590-topic-listing
                                                     <div class="d-flex">
                                                         <div>
                                                             <h5 class="mb-2"><?=$sumberAir['nama_sumber_air']?></h5>
-                                                            <h6 class="mb-1"><?=$sumberAir['nama_wilayah']?></h6>
+                                                            <h6 class="mb-1"><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></h6>
 
                                                             <p class="mb-0">Kondisi Sumber Air : <?=$sumberAir['kondisi_sumber_air']?></p>
                                                             <p class="mb-1">Kelayakan Minum : <?=$sumberAir['layak_minum']?></p>

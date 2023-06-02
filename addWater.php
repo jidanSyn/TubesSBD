@@ -4,11 +4,12 @@
         header("Location: login.php");
     }
     include('function.php');
+    global $conn;
     $listSumberAir = readSumberAir();
 
-    $r_jenis = readTable('jenis_sumber_air');
+    $r_jenis = readTable($conn, 'jenis_sumber_air');
     // $r_wilayah = readTable('wilayah');
-    $r_upaya = readTable('upaya_peningkatan_ketersediaan_air');
+    $r_upaya = readTable($conn, 'upaya_peningkatan_ketersediaan_air');
     // echo '<pre>';
     // print_r($r_jenis);
 
@@ -160,20 +161,7 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <!-- <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="form-floating">
-                                            <select name="wilayah" class="form-select" style="padding-top: 0px;padding-bottom: 0px;margin-bottom: 30px;" aria-label="Default select example" required>
-                                                <option value="" disabled selected>Wilayah</option>
-                                                <?php
-                                                    foreach($r_wilayah as $wilayah) {
-                                                ?>
-                                                    <option  value="<?=$wilayah['id_wilayah']?>"> <?=$wilayah['id_wilayah']?> - <?=$wilayah['nama_wilayah']?></option>
-                                                <?php  
-                                                    }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div> -->
+                                    
 
                                     <h6>Wilayah</h6>
                                     <div class="col-lg-6 col-md-6 col-12"> 

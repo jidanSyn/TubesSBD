@@ -5,12 +5,13 @@
     }
     include('function.php');
     $listSumberAir = readSumberAir();
+    global $conn;
 
-    $r_jenis = readTable('jenis_sumber_air');
+    $r_jenis = readTable($conn, 'jenis_sumber_air');
     // $r_wilayah = readTable('wilayah');
     $r_provincies = readTableWilayah('provinces');
     $r_regencies = readTableWilayah('regencies');
-    $r_upaya = readTable('upaya_peningkatan_ketersediaan_air');
+    $r_upaya = readTable($conn, 'upaya_peningkatan_ketersediaan_air');
     // echo '<pre>';
     // print_r($r_jenis);
 
@@ -24,6 +25,7 @@
         $id = ($_GET["id_sumber_air"]);
         $result = readOneSumberAir($id);
         $current = mysqli_fetch_assoc($result);
+        
 
         // echo "<pre>";
         // print_r($current);
@@ -178,6 +180,8 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-12 col-12">
                             <h3 class="mb-4 pb-2">Update Data <?=$current['nama_sumber_air']?></h3>
                         </div>
+
+                        <input type="hidden" name="" id="id_kabupaten" value="<?=$current['id_kabupaten']?>">
 
                         <div class="col-lg-6 col-12">
                             <form action="#" method="post" class="custom-form contact-form" role="form" id="form-update" enctype="multipart/form-data">
@@ -524,7 +528,7 @@ https://templatemo.com/tm-590-topic-listing
 		$(document).ready(function() {
 			// hilangkan label dan tag select yang belum dibutuhkan
 			// $("#lbl_kabupaten").hide();
-			$("#kabupaten").hide();
+			// $("#kabupaten").hide();
 			// $("#kecamatan").hide();
 			// $("#lbl_kecamatan").hide();
 			// $("#kelurahan").hide();
@@ -532,7 +536,7 @@ https://templatemo.com/tm-590-topic-listing
 			
 			// menambahkan option ke elemen yang memiliki id = “provinsi” dan mengosongkan element yang memiliki id = “kabupaten”.
 			$("#provinsi").append('<option value="">Pilih</option>');
-			$("#kabupaten").html('');
+			// $("#kabupaten").html('');
 
 			// implementasi kode jquery
 			url = 'get_provinsi.php';
@@ -546,6 +550,37 @@ https://templatemo.com/tm-590-topic-listing
 						$("#provinsi").append('<option value="' + result[i].id_prov + '">' + result[i].nama + '</option>');
 				}
 			});
+
+
+            $("#lbl_kabupaten").slideDown();
+			$("#kabupaten").slideDown();
+
+			// fetch id provinsi
+			var id_prov = $("#provinsi").val();
+			// masukkan id provinsi ke url kabupaten
+			var url = 'get_kabupaten.php?id_prov=' + id_prov;
+
+            let current_kab_id = $("#id_kabupaten").val(); 
+
+			$("#kabupaten").html('');
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				success: function(result) {
+					$("#kabupaten").append('<option value="">Pilih</option>');
+                    
+					for (var i = 0; i < result.length; i++) {
+							// apa yang akan dilakukan pada data json yang sudah digenerate
+                            let option = '<option ';
+                            if(current_kab_id == result[i].id_kab) option += "selected ";
+                            option += "value=\"" + result[i].id_kab + '\">' + result[i].nama + "</option>";
+                            console.log(option);
+							$("#kabupaten").append(option);
+					}
+				}
+			});
+
 		});
 
 		$("#provinsi").change(function() {
@@ -574,12 +609,12 @@ https://templatemo.com/tm-590-topic-listing
 		});
 
 		// jika nilai/value dari element yang memiliki id = “provinsi” muncul kecamatan dan kelurahan
-		$("#kabupaten").change(function() {
-			$("#kecamatan").slideDown();
-			$("#lbl_kecamatan").slideDown();
-			$("#kelurahan").slideDown();
-			$("#lbl_kelurahan").slideDown();
-		})
+		// $("#kabupaten").change(function() {
+		// 	$("#kecamatan").slideDown();
+		// 	$("#lbl_kecamatan").slideDown();
+		// 	$("#kelurahan").slideDown();
+		// 	$("#lbl_kelurahan").slideDown();
+		// })
 	</script>
 
         <!-- JAVASCRIPT FILES -->

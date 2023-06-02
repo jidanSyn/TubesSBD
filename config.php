@@ -10,6 +10,12 @@
     //  }else{
     //     echo 'sukses';
     //  }
+
+    $host = 'localhost';
+    $user = 'root';
+    $password = '';
+    $my_db = 'wilayah_indonesia';
+    $conn2 = mysqli_connect($host, $user, $password, $my_db);
      
 
 ?>

@@ -64,8 +64,8 @@
     }
 
 
-    function readTable($table){
-        global $conn;
+    function readTable($conn, $table){
+        
         $query = "SELECT * FROM ".$table;
         $result = mysqli_query($conn, $query);
 

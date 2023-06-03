@@ -378,9 +378,7 @@ function readSumberAirLayakMinum(){
 function readUpaya(){
     global $conn;
 
-    $query = "SELECT * FROM upaya_peningkatan_ketersediaan_air
-    
-    ";
+    $query = "SELECT * FROM upaya_peningkatan_ketersediaan_air";
 
 
     $eksekusi = mysqli_query($conn, $query);
@@ -392,13 +390,93 @@ function readSumberAirUpaya(){
     global $conn;
 
     $query = "SELECT * FROM sumber_air_upaya_peningkatan
-    JOIN sumber_air ON sumber_air.id_sumber_air = sumber_air_upaya_peningkatan.id_sumber_air
-    ";
+    JOIN sumber_air ON sumber_air.id_sumber_air = sumber_air_upaya_peningkatan.id_sumber_air";
 
 
     $eksekusi = mysqli_query($conn, $query);
 
     return $eksekusi;
+}
+
+function addUpaya($data, $file){
+
+    global $conn;
+    $namaUpaya = $data['nama_upaya'];
+
+    $query = "INSERT INTO upaya_peningkatan_ketersediaan_air VALUES('', '$namaUpaya' )";
+
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+    if($isSucceed > 0) {
+        $query = "SELECT id_upaya_ketersediaan_air FROM upaya_peningkatan_ketersediaan_air WHERE nama_upaya LIKE '$namaUpaya'";
+        $result = mysqli_query($conn, $query);
+        while($data = mysqli_fetch_assoc($result)) {
+            $id = $data['id_upaya_ketersediaan_air'];
+        }
+    }
+    
+    //mengembalikan nilai sukses
+    return $isSucceed;
+}
+
+
+function readQuery($table, $id, $find){
+    global $conn;
+    $query = "SELECT * FROM ".$table." WHERE ".$id."=".$find;
+    $result = mysqli_query($conn, $query);
+
+    return $result;
+}
+
+function updateUpaya($data, $file){
+       
+    global $conn;
+    $id = $data['id'];
+    $namaUpaya = $data['nama_upaya'];
+
+   
+    $query = "UPDATE upaya_peningkatan_ketersediaan_air SET nama_upaya = '$namaUpaya' WHERE id_upaya_ketersediaan_air = $id";
+    $result = mysqli_query($conn, $query);
+
+
+    $isSucceed = mysqli_affected_rows($conn);
+    
+    // mengembalikan nilai sukses
+    return $isSucceed;
+}
+
+function readListSumberAirUpaya($id){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air_upaya_peningkatan
+    JOIN sumber_air ON sumber_air.id_sumber_air = sumber_air_upaya_peningkatan.id_sumber_air
+    JOIN upaya_peningkatan_ketersediaan_air ON sumber_air_upaya_peningkatan.id_upaya_peningkatan_ketersediaan_air =  upaya_peningkatan_ketersediaan_air.id_upaya_ketersediaan_air
+    WHERE id_upaya_peningkatan_ketersediaan_air = $id";
+
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function deleteUpaya($id){
+    global $conn;
+
+    $sumberUpaya = readListSumberAirUpaya($id);
+    while ($listUpaya = mysqli_fetch_assoc($sumberUpaya)) {
+        $query = "DELETE FROM sumber_air_upaya_peningkatan WHERE id_sumber_air_upaya_peningkatan = ".$listUpaya['id_sumber_air_upaya_peningkatan'];
+        $result = mysqli_query($conn, $query);
+    }
+    $query = "DELETE FROM upaya_peningkatan_ketersediaan_air WHERE id_upaya_ketersediaan_air = $id";
+    $result = mysqli_query($conn, $query);
+
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+
+    // mengembalikan nilai sukses
+    return $isSucceed;
 }
 
 ?>

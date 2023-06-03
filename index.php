@@ -117,11 +117,11 @@ https://templatemo.com/tm-590-topic-listing
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
+                                <a class="nav-link " href="topics-listing.php#list" >List Sumber Air</a>
                             </li>
 
                             <li class="nav-item" >
-                                <a class="nav-link"  href="upaya-listing.php" >List Upaya Pelestarian</a>
+                                <a class="nav-link"  href="upaya-listing.php#list" >List Upaya Pelestarian</a>
                             </li>
                         </ul>
 
@@ -153,7 +153,7 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block bg-white shadow-lg">
-                                <a href="topics-listing.php">
+                                <a href="topics-listing.php#list">
                                     <div class="d-flex">
                                         <div>
                                             <h5 class="mb-2">HydroCulus?</h5>
@@ -479,8 +479,8 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-12 text-center mt-5">
                             <p class="text-white">
-                                Ingin tahu apa lagi?
-                                <a href="#" class="btn custom-btn custom-border-btn ms-3">lainnya</a>
+                                Ingin tahu lebih banyak?
+                                <a href="upaya-listing.php" class="btn custom-btn custom-border-btn ms-3">lainnya</a>
                             </p>
                         </div>
                     </div>

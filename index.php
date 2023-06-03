@@ -119,6 +119,10 @@ https://templatemo.com/tm-590-topic-listing
                             <li class="nav-item">
                                 <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
+
+                            <li class="nav-item" >
+                                <a class="nav-link"  href="upaya-listing.php" >List Upaya Pelestarian</a>
+                            </li>
                         </ul>
 
                         <div class="d-none d-lg-block">

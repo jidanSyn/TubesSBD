@@ -126,8 +126,8 @@ https://templatemo.com/tm-590-topic-listing
             <section class="topics-detail-section section-padding" id="topics-detail">
             
                 <div class="container">
-                    <a type="button" class="btn btn-primary btn-sm" href="admin.php">Tabel Sumber Air</a>
-                    <a type="button" class="btn btn-secondary btn-sm" href="admin_upaya.php">Tabel Upaya</a>
+                    <a type="button" class="btn btn-primary btn-sm" href="admin.php#topics-detail">Tabel Sumber Air</a>
+                    <a type="button" class="btn btn-secondary btn-sm" href="admin_upaya.php#topics-detail">Tabel Upaya</a>
                 <br><br><br>
                 <h1>Tabel Sumber Air</h1><br><br>
                 <a type="button" class="btn btn-outline-primary" href="addWater.php">Tambah Data</a>
@@ -163,7 +163,7 @@ https://templatemo.com/tm-590-topic-listing
                         <td><?=$sumberAir['nama_jenis_sumber_air']?></td>
                         <td><a href="images/foto_sumber_air/<?=$sumberAir['foto_sumber_air']?>">See image</a></td>
                         <td><a type="button" class="btn btn-outline-success" href="updateWater.php?id_sumber_air=<?=$sumberAir['id_sumber_air']?>">Update</a> 
-                        <a type="button" class="btn btn-outline-danger" href="deleteWater.php?id=<?=$sumberAir['id_sumber_air']?>">Delete</a>
+                        <a type="button" class="btn btn-outline-danger"onclick="return confirm('Yakin Hapus?')" href="deleteWater.php?id=<?=$sumberAir['id_sumber_air']?>">Delete</a>
                         </td>
                         </tr>
                         <?php

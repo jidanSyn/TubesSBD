@@ -110,13 +110,13 @@ https://templatemo.com/tm-590-topic-listing
 
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
-                <a type="button" class="btn btn-secondary btn-sm" href="admin.php">Tabel Sumber Air</a>
-                    <a type="button" class="btn btn-primary btn-sm" href="admin_upaya.php">Tabel Upaya</a>
+                <a type="button" class="btn btn-secondary btn-sm" href="admin.php#topics-detail">Tabel Sumber Air</a>
+                    <a type="button" class="btn btn-primary btn-sm" href="admin_upaya.php#topics-detail">Tabel Upaya</a>
                 <br><br><br>
                 <h1>Tabel Upaya Pelestarian Sumber Air</h1><br><br>
-                <a type="button" class="btn btn-outline-primary" href="addUpaya.php">Tambah Data</a>
+                <a type="button" class="btn btn-outline-primary" href="addUpaya.php#form">Tambah Data</a>
                 <table class="table caption-top">
-                    <caption>List of sumber air</caption>
+                    <caption>List of upaya</caption>
                     <thead>
                         <tr>
                         <th scope="col"></th>
@@ -133,7 +133,7 @@ https://templatemo.com/tm-590-topic-listing
                         <th scope="row"><?=$cacah?></th>
                         <td><?=$upaya['nama_upaya']?></td>
                         <td><a type="button" class="btn btn-outline-success" href="updateUpaya.php?id_upaya_ketersediaan_air=<?=$upaya['id_upaya_ketersediaan_air']?>">Update</a> 
-                        <a type="button" class="btn btn-outline-danger" href="deleteUpaya.php?id=<?=$upaya['id_upaya_ketersediaan_air']?>">Delete</a>
+                        <a type="button" class="btn btn-outline-danger" onclick="return confirm('Yakin Hapus?')" href="deleteUpaya.php?id=<?=$upaya['id_upaya_ketersediaan_air']?>">Delete</a>
                         </td>
                         </tr>
                         <?php

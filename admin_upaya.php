@@ -1,22 +1,11 @@
 <?php
-    include('function.php');
-    $listSumberAir = readSumberAir();
-
-    if (isset($_GET['id_sumber_air'])) {
-      $id = ($_GET["id_sumber_air"]);
-      $result_air = readOneSumberAir($id);
-      $detail_air = mysqli_fetch_assoc($result_air);
-      $result_upaya = readUpayaSumberAir($id);
-      
-    
-    // echo '<pre>';
-    // print_r($detail_air);
-    // print_r($result_upaya);
-
-    // echo $detail_air['nama_sumber_air'];
-    
-    
+    session_start();
+    if(!isset($_SESSION["login"])) {
+        header("Location: login.php");
     }
+    include('function.php');
+    $listUpaya = readUpaya();
+
 ?>
 
 <!doctype html>
@@ -28,7 +17,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Sumber Air</title>
+        <title>Admin</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,11 +66,11 @@ https://templatemo.com/tm-590-topic-listing
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" href="topics-listing.php" >List Sumber Air</a>
+                                <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
 
                             <li class="nav-item" >
-                                <a class="nav-link"  href="topics-listing.php" >List Upaya Pelestarian</a>
+                                <a class="nav-link"  href="upaya-listing.php" >List Upaya Pelestarian</a>
                             </li>
                         </ul>
 
@@ -100,24 +89,17 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-5 col-12 mb-5">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.php">Homepage</a></li>
-
-                                    <li class="breadcrumb-item active" aria-current="page"><?=$detail_air['nama_sumber_air']?></li>
+                                    <li class="breadcrumb-item"><a href="admin.php">Halaman Admin</a></li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">Details of <br><?=$detail_air['nama_sumber_air']?></h2>
-
-                            <div class="d-flex align-items-center mt-5">
-                                <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Read More</a>
-
-                                <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
-                            </div>
+                            <h2 class="text-white">Hanya untuk admin dan orang yang memiliki akses</h2>
+                            <a type="button" class="btn btn-danger" href="logout.php">Log Out</a>
                         </div>
 
                         <div class="col-lg-5 col-12">
                             <div class="topics-detail-block bg-white shadow-lg">
-                                <img src="images/foto_sumber_air/<?=$detail_air['foto_sumber_air']?>" class="topics-detail-block-image img-fluid">
+                                <img src="images/sumber/c1.jpg" class="topics-detail-block-image img-fluid">
                             </div>
                         </div>
 
@@ -128,83 +110,41 @@ https://templatemo.com/tm-590-topic-listing
 
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 m-auto">
-                            <h3 class="mb-4"><?=$detail_air['nama_sumber_air']?></h3>
-
-                            <p><?=$detail_air['nama_sumber_air']?> berada di <?=$detail_air['name']?>, <?=$detail_air['provinces_name']?></p>
-
-                            <p>Kondisi Sumber Air: <?=$detail_air['kondisi_sumber_air']?></p>
-
-                            <p>Suhu: <?=$detail_air['suhu']?>&#8451;</p>
-
-                            <p>Warna: <?=$detail_air['warna']?></p>
-
-                            <p>pH: <?=$detail_air['pH']?></p>
-
-                            <p>Kelayakan untuk diminum: <?=$detail_air['layak_minum']?></p>
-
-                            <br>
-
-                            <p>Upaya yang dapat dilakukan untuk melestarikan dan meningkatkan kualitas sumber air:</p>
-
-                            <ul>
-                                <?php
-                                    foreach($result_upaya as $upaya) {
-                                        echo '<li><p>'.$upaya["nama_upaya"].'</p></li>';
-                                    }
-                                ?>
-                                
-                            </ul>
-
-                            <!-- <p><strong>There are so many ways to make money online</strong>. Below are several platforms you can use to find success. Keep in mind that there is no one path everyone can take. If that were the case, everyone would have a million dollars.</p>
-
-                            <blockquote>
-                                Freelancing your skills isn’t going to make you a millionaire overnight.
-                            </blockquote> -->
-
-                            <!-- <div class="row my-4">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <img src="images/businesswoman-using-tablet-analysis.jpg" class="topics-detail-block-image img-fluid">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12 mt-4 mt-lg-0 mt-md-0">
-                                    <img src="images/colleagues-working-cozy-office-medium-shot.jpg" class="topics-detail-block-image img-fluid">
-                                </div>
-                            </div>
-
-                            <p>Most people start with freelancing skills they already have as a side hustle to build up income. This extra cash can be used for a vacation, to boost up savings, investing, build business.</p>
-                        </div> -->
-
-                    </div>
+                <a type="button" class="btn btn-secondary btn-sm" href="admin.php">Tabel Sumber Air</a>
+                    <a type="button" class="btn btn-primary btn-sm" href="admin_upaya.php">Tabel Upaya</a>
+                <br><br><br>
+                <h1>Tabel Upaya Pelestarian Sumber Air</h1><br><br>
+                <a type="button" class="btn btn-outline-primary" href="addUpaya.php">Tambah Data</a>
+                <table class="table caption-top">
+                    <caption>List of sumber air</caption>
+                    <thead>
+                        <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nama Upaya</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $cacah = 1;
+                            foreach($listUpaya as $upaya) {
+                        ?>
+                        <tr>
+                        <th scope="row"><?=$cacah?></th>
+                        <td><?=$upaya['nama_upaya']?></td>
+                        <td><a type="button" class="btn btn-outline-success" href="updateUpaya.php?id_upaya_ketersediaan_air=<?=$upaya['id_upaya_ketersediaan_air']?>">Update</a> 
+                        <a type="button" class="btn btn-outline-danger" href="deleteUpaya.php?id=<?=$upaya['id_upaya_ketersediaan_air']?>">Delete</a>
+                        </td>
+                        </tr>
+                        <?php
+                                $cacah++;
+                            }
+                        ?>
+                    </tbody>
+                    </table>
                 </div>
             </section>
 
-
-            <!-- <section class="section-padding section-bg">
-                <div class="container">
-                    <div class="row justify-content-center">
-
-                        <div class="col-lg-5 col-12">
-                            <img src="images/rear-view-young-college-student.jpg" class="newsletter-image img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-5 col-12 subscribe-form-wrap d-flex justify-content-center align-items-center">
-                            <form class="custom-form subscribe-form" action="#" method="post" role="form">
-                                <h4 class="mb-4 pb-2">Get Newsletter</h4>
-
-                                <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email Address" required="">
-
-                                <div class="col-lg-12 col-12">
-                                    <button type="submit" class="form-control">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
         </main>
 		
         <footer class="site-footer section-padding">

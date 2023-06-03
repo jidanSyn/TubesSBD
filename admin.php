@@ -83,6 +83,10 @@ https://templatemo.com/tm-590-topic-listing
                             <li class="nav-item">
                                 <a class="nav-link " href="topics-listing.php" >List Sumber Air</a>
                             </li>
+
+                            <li class="nav-item" >
+                                <a class="nav-link"  href="upaya-listing.php" >List Upaya Pelestarian</a>
+                            </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
@@ -120,7 +124,11 @@ https://templatemo.com/tm-590-topic-listing
 
 
             <section class="topics-detail-section section-padding" id="topics-detail">
+            
                 <div class="container">
+                    <a type="button" class="btn btn-primary btn-sm" href="admin.php">Tabel Sumber Air</a>
+                    <a type="button" class="btn btn-secondary btn-sm" href="admin_upaya.php">Tabel Upaya</a>
+                <br><br><br>
                 <h1>Tabel Sumber Air</h1><br><br>
                 <a type="button" class="btn btn-outline-primary" href="addWater.php">Tambah Data</a>
                 <table class="table caption-top">

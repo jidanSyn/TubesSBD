@@ -375,4 +375,30 @@ function readSumberAirLayakMinum(){
     return $eksekusi;
 }
 
+function readUpaya(){
+    global $conn;
+
+    $query = "SELECT * FROM upaya_peningkatan_ketersediaan_air
+    
+    ";
+
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
+function readSumberAirUpaya(){
+    global $conn;
+
+    $query = "SELECT * FROM sumber_air_upaya_peningkatan
+    JOIN sumber_air ON sumber_air.id_sumber_air = sumber_air_upaya_peningkatan.id_sumber_air
+    ";
+
+
+    $eksekusi = mysqli_query($conn, $query);
+
+    return $eksekusi;
+}
+
 ?>

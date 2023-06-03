@@ -9,8 +9,8 @@
     $listSumberAirpH = readSumberAirpH();
     $listSumberAirLayakMinum = readSumberAirLayakMinum();
     $r_jenis = readTable($conn, 'jenis_sumber_air');
-    $r_provinces = readTable($conn2, 'provinces');
-    $r_regencies = readTable($conn2, 'regencies');
+    $r_provinces = readTable($conn, 'provinces');
+    $r_regencies = readTable($conn, 'regencies');
 
     $dataPerSlide = 3;
     $dataCount = mysqli_num_rows($listSumberAir);

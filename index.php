@@ -3,10 +3,10 @@
     global $conn;
     global $conn2;
     $listSumberAir = readSumberAir();
-    $listSumberAirKondisi = readSumberAirKondisi();
-    $listSumberAirSuhu = readSumberAirSuhu();
-    $listSumberAirWarna = readSumberAirWarna();
-    $listSumberAirpH = readSumberAirpH();
+    // $listSumberAirKondisi = readSumberAirKondisi();
+    // $listSumberAirSuhu = readSumberAirSuhu();
+    // $listSumberAirWarna = readSumberAirWarna();
+    // $listSumberAirpH = readSumberAirpH();
     $listSumberAirLayakMinum = readSumberAirLayakMinum();
     $r_jenis = readTable($conn, 'jenis_sumber_air');
     $r_provinces = readTable($conn, 'provinces');
@@ -352,26 +352,6 @@ https://templatemo.com/tm-590-topic-listing
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all-pane" type="button" role="tab" aria-controls="all-pane" aria-selected="true">All</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link " id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="false">Kondisi</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Suhu</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Warna</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">pH</button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Layak Minum</button>
                             </li>
                         </ul>
                     </div>

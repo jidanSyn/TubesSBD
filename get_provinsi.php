@@ -1,9 +1,9 @@
 <?php
 
-include "config_wilayah.php";
+include "config.php";
 
 $sql = "SELECT * FROM provinces";
-$query = $mysqli->query($sql);
+$query = $conn->query($sql);
 $data = [];
 
 // pengulangan setiap rownya

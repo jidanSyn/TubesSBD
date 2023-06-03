@@ -3,7 +3,8 @@
     if(isset($_POST["register"])) {
         if(register($_POST) > 0) {
             echo "<script>
-                    alert('New Admin has been created');
+					alert('New Admin has been created');
+                    document.location.href = 'login.php';
                     </script>";
         } else {
             echo mysqli_error($conn);
@@ -26,22 +27,15 @@
 
 	</head>
 	<body>
-		<!-- <?php if($error) {
-			echo 	"<script>
-						alert('Incorrect username or password!')
-					</script>";
-			
-		}
-			
-		?> -->
+		
 			
 	<section class="ftco-section">
 		<div class="container">
-			<div class="row justify-content-center">
+			<!-- <div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Create Admin</h2>
 				</div>
-			</div>
+			</div> -->
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">

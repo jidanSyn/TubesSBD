@@ -1,6 +1,5 @@
 <?php
     include('config.php');
-    include('config_wilayah.php');
 
     function readSumberAir(){
         global $conn;
@@ -8,8 +7,8 @@
 
         $query = "SELECT * FROM sumber_air 
         -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
+        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         ORDER BY id_sumber_air
         ";
@@ -28,8 +27,8 @@
 
         $query = "SELECT * FROM sumber_air 
         -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
+        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         ORDER BY id_sumber_air
         LIMIT $start, $limit
@@ -49,8 +48,8 @@
 
         $query = "SELECT * FROM sumber_air 
         -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN wilayah_indonesia.regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN wilayah_indonesia.provinces ON regencies.province_id = provinces.id
+        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+        JOIN provinces ON regencies.province_id = provinces.id
         JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
         WHERE sumber_air.id_sumber_air = " . $id;
 
@@ -95,9 +94,9 @@
     };
 
     function readTableWilayah($table){
-        global $mysqli;
+        global $conn;
         $query = "SELECT * FROM ".$table;
-        $result = mysqli_query($mysqli, $query);
+        $result = mysqli_query($conn, $query);
 
 
         return $result;
@@ -107,7 +106,6 @@
 function addWater($data, $file, $listUpaya){
 
     global $conn;
-    global $mysqli;
     $foto = $file['image']['name'];
     $tempNamaFoto = $file['image']['tmp_name'];
     $direktori = 'images/foto_sumber_air/' . $foto;
@@ -178,7 +176,6 @@ function updateWater($data, $file, $listUpaya)
 {
 
     global $conn;
-    global $mysqli;
     $id = $data['id_sumber_air'];   
     $namaSumberAir = $data['nama_sumber_air'];
     // $provinsi = $_POST['provinsi'];

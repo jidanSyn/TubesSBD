@@ -1,10 +1,10 @@
 <?php
     include('../function.php');
-    global $conn2;
+    global $conn;
     $provinsi = $_GET['provinsi'];
     $query = "SELECT * from regencies";
     if($provinsi != '') $query .= " where province_id = $provinsi";
-    $r_regencies = mysqli_query($conn2, $query);
+    $r_regencies = mysqli_query($conn, $query);
     // $check = var_dump($r_regencies);
     echo "<script>console.log('$query')</script>"
 ?>

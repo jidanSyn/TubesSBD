@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-06-03 09:46:20
+Date: 2023-06-03 16:20:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `admins` (
   `username` varchar(50) NOT NULL,
   `password` varchar(300) NOT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of admins
@@ -32,6 +32,7 @@ INSERT INTO `admins` VALUES ('1', 'jidan', '$argon2i$v=19$m=65536,t=4,p=1$NUdvL2
 INSERT INTO `admins` VALUES ('2', 'wildan', '$argon2i$v=19$m=65536,t=4,p=1$RWQ1MkJBaXNkL0psSWRVNw$h3Or1UEbeDIfLrtnj2jUiBFb0ng49Zhddk85dxhyEeU');
 INSERT INTO `admins` VALUES ('3', 'danwil', '$argon2i$v=19$m=65536,t=4,p=1$V0ZzOUptL25JbWxUTDZxQg$uX+jjkxMydu8dff43fDa5WicTsWEaEjqyi+xlVOc+y4');
 INSERT INTO `admins` VALUES ('4', 'halo', '$argon2i$v=19$m=65536,t=4,p=1$NmQyVDlqOWsvcUwxcXhnMQ$anW3OiyMCb3f23herUh1owtKGK+4SAMMZZXRb6Q3XeI');
+INSERT INTO `admins` VALUES ('5', 'shidiq', '$argon2i$v=19$m=65536,t=4,p=1$d2dvZ2ZEb29xQU43MEtuTw$g2OQcyDCM0GIFpRXGZxonGhokc+YMuoufEE27zz4nOM');
 
 -- ----------------------------
 -- Table structure for `jenis_sumber_air`
@@ -99,7 +100,7 @@ CREATE TABLE `log_update_sumber_air` (
   `old_foto_sumber_air` varchar(100) DEFAULT NULL,
   `tgl_update` date DEFAULT NULL,
   PRIMARY KEY (`id_log_update_sumber_air`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of log_update_sumber_air
@@ -147,6 +148,9 @@ INSERT INTO `log_update_sumber_air` VALUES ('49', '9', 'Danau Batur', 'Rusak Par
 INSERT INTO `log_update_sumber_air` VALUES ('50', '10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '0', 'foto_sungai_bengawan_solo.jpg', '2023-06-02');
 INSERT INTO `log_update_sumber_air` VALUES ('51', '19', 'Sungai Mamberamo', 'Rusak Sedang', '28', 'Keruh', '6.4', 'Tidak', '5', '0', 'default.png', '2023-06-02');
 INSERT INTO `log_update_sumber_air` VALUES ('52', '21', 'testd', 'Rusak Parah', '25', 'Bening', '7.0', 'Layak', '2', '5103', 'default.png', '2023-06-03');
+INSERT INTO `log_update_sumber_air` VALUES ('53', '7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '3203', 'foto_sumur_abadi_semarang.jpg', '2023-06-03');
+INSERT INTO `log_update_sumber_air` VALUES ('54', '1', 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', '3', '3214', 'foto_waduk_jatiluhur.jpg', '2023-06-03');
+INSERT INTO `log_update_sumber_air` VALUES ('55', '10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '3372', 'foto_sungai_bengawan_solo.jpg', '2023-06-03');
 
 -- ----------------------------
 -- Table structure for `provinces`
@@ -752,16 +756,16 @@ CREATE TABLE `sumber_air` (
 -- ----------------------------
 -- Records of sumber_air
 -- ----------------------------
-INSERT INTO `sumber_air` VALUES ('1', 'Waduk Jati Luhur', 'Baik', '26', 'Keruh', '7.6', 'Tidak', '3', '3214', 'foto_waduk_jatiluhur.jpg');
+INSERT INTO `sumber_air` VALUES ('1', 'Waduk Jati Luhur', 'Rusak Sedang', '26', 'Keruh', '7.6', 'Tidak', '3', '3214', 'foto_waduk_jatiluhur.jpg');
 INSERT INTO `sumber_air` VALUES ('2', 'Sungai Citarum', 'Baik', '28', 'Bening', '7.3', 'Layak', '5', '3204', 'foto_sungai_citarum.jpg');
 INSERT INTO `sumber_air` VALUES ('3', 'Mata Air Aqua Cipondok', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '3213', 'foto_mata_air_aqua_cipondok.jpg');
 INSERT INTO `sumber_air` VALUES ('4', 'Sungai Ciliwung', 'Rusak Sedang', '29', 'Keruh', '7.9', 'Tidak', '5', '3175', 'foto_sungai_ciliwung.jpg');
 INSERT INTO `sumber_air` VALUES ('5', 'Mata Air Lubuk Bonta', 'Baik', '26', 'Bening', '7.4', 'Layak', '1', '1306', 'foto_mata_air_lubuk_bonta.jpg');
 INSERT INTO `sumber_air` VALUES ('6', 'Waduk Sermo', 'Rusak Sedang', '29', 'Keruh', '7.7', 'Tidak', '3', '3401', 'foto_waduk_sermo.jpg');
-INSERT INTO `sumber_air` VALUES ('7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '3203', 'foto_sumur_abadi_semarang.jpg');
+INSERT INTO `sumber_air` VALUES ('7', 'Sumur Abadi', 'Baik', '26', 'Bening', '7.3', 'Layak', '2', '3374', 'foto_sumur_abadi_semarang.jpg');
 INSERT INTO `sumber_air` VALUES ('8', 'Danau Cermin Lamaru', 'Baik', '25', 'Bening', '7.3', 'Layak', '4', '6471', 'foto_danau_cermin_lamaru.jpg');
 INSERT INTO `sumber_air` VALUES ('9', 'Danau Batur', 'Rusak Parah', '30', 'Keruh', '6.9', 'Tidak', '4', '5106', 'foto_danau_batur_bali.jpg');
-INSERT INTO `sumber_air` VALUES ('10', 'Sungai Bengawan Solo', 'Baik', '29', 'Keruh', '7.3', 'Tidak', '5', '3372', 'foto_sungai_bengawan_solo.jpg');
+INSERT INTO `sumber_air` VALUES ('10', 'Sungai Bengawan Solo', 'Rusak Parah', '29', 'Keruh', '8.2', 'Tidak', '5', '3372', 'foto_sungai_bengawan_solo.jpg');
 INSERT INTO `sumber_air` VALUES ('11', 'Sungai Musi', 'Rusak Sedang', '30', 'Keruh', '8.2', 'Tidak', '5', '1671', 'foto_sungai_musi.jpg');
 INSERT INTO `sumber_air` VALUES ('12', 'Danau Toba', 'Baik', '24', 'Bening', '7.2', 'Layak', '4', '1217', 'foto_danau_toba.jpg');
 INSERT INTO `sumber_air` VALUES ('13', 'Waduk Riam Kanan', 'Rusak Parah', '29', 'Keruh', '8.6', 'Tidak', '3', '6303', 'foto_waduk_riam_kanan.jpg');
@@ -786,7 +790,7 @@ CREATE TABLE `sumber_air_upaya_peningkatan` (
   KEY `id_upaya_peningkatan` (`id_upaya_peningkatan_ketersediaan_air`),
   CONSTRAINT `id_sumber_air` FOREIGN KEY (`id_sumber_air`) REFERENCES `sumber_air` (`id_sumber_air`) ON DELETE CASCADE,
   CONSTRAINT `id_upaya_peningkatan` FOREIGN KEY (`id_upaya_peningkatan_ketersediaan_air`) REFERENCES `upaya_peningkatan_ketersediaan_air` (`id_upaya_ketersediaan_air`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sumber_air_upaya_peningkatan
@@ -815,9 +819,6 @@ INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('96', '18', '5');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('97', '18', '7');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('101', '20', '5');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('102', '20', '7');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('103', '1', '1');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('104', '1', '2');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('105', '1', '7');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('106', '2', '1');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('107', '2', '2');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('108', '2', '7');
@@ -830,22 +831,25 @@ INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('114', '5', '5');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('115', '6', '2');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('116', '6', '3');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('117', '6', '4');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('118', '7', '1');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('119', '7', '2');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('120', '7', '5');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('121', '7', '6');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('122', '8', '1');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('123', '8', '2');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('124', '8', '5');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('125', '9', '2');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('126', '9', '3');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('127', '9', '4');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('128', '10', '2');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('129', '10', '3');
-INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('130', '10', '4');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('131', '19', '4');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('132', '19', '6');
 INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('133', '19', '7');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('141', '7', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('142', '7', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('143', '7', '5');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('144', '7', '6');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('145', '1', '1');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('146', '1', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('147', '1', '7');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('148', '10', '2');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('149', '10', '3');
+INSERT INTO `sumber_air_upaya_peningkatan` VALUES ('150', '10', '4');
 
 -- ----------------------------
 -- Table structure for `upaya_peningkatan_ketersediaan_air`

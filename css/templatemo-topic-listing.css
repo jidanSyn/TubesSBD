@@ -197,6 +197,10 @@ strong {
   color: var(--primary-color);
 }
 
+.tab-pane.show {
+  z-index: 99;
+}
+
 
 /*---------------------------------------
   CUSTOM ICON COLOR               

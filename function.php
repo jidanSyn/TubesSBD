@@ -237,18 +237,17 @@ function updateWater($data, $file, $listUpaya)
         $result = mysqli_query($conn, $query);
     }
 
-    $isSucceed = mysqli_affected_rows($conn);
-
-    if ($isSucceed > 0) {
-        foreach ($sumberUpaya as $upaya) {
-            $query = "DELETE FROM sumber_air_upaya_peningkatan WHERE id_sumber_air_upaya_peningkatan = " . $upaya['id_sumber_air_upaya_peningkatan'];
-            $result = mysqli_query($conn, $query);
-        }
-        foreach ($listUpaya as $upaya) {
-            $query = "INSERT INTO sumber_air_upaya_peningkatan VALUES('','$id', '$upaya')";
-            $result = mysqli_query($conn, $query);
-        }
+    
+    foreach ($sumberUpaya as $upaya) {
+        $query = "DELETE FROM sumber_air_upaya_peningkatan WHERE id_sumber_air_upaya_peningkatan = " . $upaya['id_sumber_air_upaya_peningkatan'];
+        $result = mysqli_query($conn, $query);
     }
+    foreach ($listUpaya as $upaya) {
+        $query = "INSERT INTO sumber_air_upaya_peningkatan VALUES('','$id', '$upaya')";
+        $result = mysqli_query($conn, $query);
+    }
+    
+    $isSucceed = mysqli_affected_rows($conn);
     
     //mengembalikan nilai sukses
     return $isSucceed;

@@ -141,6 +141,7 @@ https://templatemo.com/tm-590-topic-listing
                         <th scope="col">Suhu</th>
                         <th scope="col">Warna</th>
                         <th scope="col">pH</th>
+                        <th scope="col">Layak Minum</th>
                         <th scope="col">Wilayah</th>
                         <th scope="col">Jenis</th>
                         <th scope="col">Foto</th>
@@ -158,6 +159,7 @@ https://templatemo.com/tm-590-topic-listing
                         <td><?=$sumberAir['kondisi_sumber_air']?></td>
                         <td><?=$sumberAir['suhu']?></td>
                         <td><?=$sumberAir['warna']?></td>
+                        <td><?=$sumberAir['pH']?></td>
                         <td><?=$sumberAir['layak_minum']?></td>
                         <td><?=$sumberAir['name']?>, <?=$sumberAir['provinces_name']?></td>
                         <td><?=$sumberAir['nama_jenis_sumber_air']?></td>

@@ -53,6 +53,7 @@ $(document).ready(function(){
         // alert('next');
     })
 
+    // default values
     let jenis = '';
     let kondisi = '';
     var provinsi = '';
@@ -60,20 +61,14 @@ $(document).ready(function(){
     let sort = 'id_sumber_air';
     let order = 'ASC';
     let keyword = '';
-
-    $('#filter-sort').on('change reset', function () {
-        sort = this.value;
-        
-    });
-
-    $('#filter-order').on('change reset', function () {
-        order = this.value;
-    });
-
+    // pengambilan value dari input
+    $('#filter-sort').on('change reset', function () { sort = this.value;});
+    $('#filter-order').on('change reset', function () { order = this.value; });
+    // pengambilan value id provinsi
     $('#filter-provinsi').on('change reset', function () {
         provinsi = this.value;
-        var url = 'get_kabupaten.php?id_prov=' + provinsi;
-
+        // pembuatan filter regency sesuai dengan provinsi nya
+        var url = 'get_kabupaten.php?id_prov=' + provinsi;  
         $("#kabupaten").html('');
         $.ajax({
             url: url,
@@ -91,34 +86,16 @@ $(document).ready(function(){
         });
 
     });
-
-    $('#filter-regency').on('change reset', function () {
-        regency = this.value;
-
-    });
-
-    $('#filter-jenis').on('change reset', function () {
-        jenis = this.value;
-        
-    });
-
-    $('#filter-kondisi').on('change reset', function () {
-        kondisi = this.value;
-
-    });
+    // pengambilan value filter
+    $('#filter-regency').on('change reset', function () { regency = this.value; });
+    $('#filter-jenis').on('change reset', function () { jenis = this.value; });
+    $('#filter-kondisi').on('change reset', function () { kondisi = this.value; });
 
     
-    // console.log('ok lah');
+    
     $('#keyword').on('keyup', function() {
-        // $('div[data-index]').removeClass('show');
-        
-        // jquery compact
-        // $('#active-search').load('ajax/search.php?keyword=' + $('#keyword').val());
-        // console.log(jenis);
-        keyword = this.value;
-        
-
-        // jquery flexible
+        keyword = this.value;   // pengambilan value keyword
+        // live load result
         $.get('ajax/search.php?keyword=' + keyword + '&sort=' + sort + '&order=' + order + '&provinsi=' + provinsi + '&regency=' + regency + '&jenis=' + jenis + '&kondisi=' + kondisi, function (data) {
             $('#active-search').html(data);
         });

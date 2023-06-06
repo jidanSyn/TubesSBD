@@ -5,13 +5,13 @@
         global $conn;
         
 
-        $query = "SELECT * FROM sumber_air 
-        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN provinces ON regencies.province_id = provinces.id
-        JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
-        ORDER BY id_sumber_air
-        ";
+        $query = 
+"SELECT * FROM sumber_air 
+JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+JOIN provinces ON regencies.province_id = provinces.id
+JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+ORDER BY id_sumber_air
+";
 
         
 
@@ -25,14 +25,14 @@
         global $conn;
         
 
-        $query = "SELECT * FROM sumber_air 
-        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN provinces ON regencies.province_id = provinces.id
-        JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
-        ORDER BY id_sumber_air
-        LIMIT $start, $limit
-        ";
+        $query = 
+"SELECT * FROM sumber_air 
+JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+JOIN provinces ON regencies.province_id = provinces.id
+JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+ORDER BY id_sumber_air
+LIMIT $start, $limit
+";
 
         
 
@@ -46,12 +46,12 @@
     function readOneSumberAir($id){
         global $conn;
 
-        $query = "SELECT * FROM sumber_air 
-        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN provinces ON regencies.province_id = provinces.id
-        JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
-        WHERE sumber_air.id_sumber_air = " . $id;
+        $query = 
+"SELECT * FROM sumber_air 
+JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+JOIN provinces ON regencies.province_id = provinces.id
+JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+WHERE sumber_air.id_sumber_air = " . $id;
 
         $eksekusi = mysqli_query($conn, $query);
 
@@ -61,22 +61,24 @@
     
     function readUpayaSumberAir($find){
         global $conn;
-        $query = "SELECT *
-        FROM sumber_air_upaya_peningkatan 
-        JOIN upaya_peningkatan_ketersediaan_air ON sumber_air_upaya_peningkatan.id_upaya_peningkatan_ketersediaan_air = upaya_peningkatan_ketersediaan_air.id_upaya_ketersediaan_air 
-        WHERE sumber_air_upaya_peningkatan.id_sumber_air =" . $find;
-        $result = mysqli_query($conn, $query);
-        return $result;
+        $query = 
+"SELECT *
+FROM sumber_air_upaya_peningkatan 
+JOIN upaya_peningkatan_ketersediaan_air ON sumber_air_upaya_peningkatan.id_upaya_peningkatan_ketersediaan_air = upaya_peningkatan_ketersediaan_air.id_upaya_ketersediaan_air 
+WHERE sumber_air_upaya_peningkatan.id_sumber_air =" . $find;
+$result = mysqli_query($conn, $query);
+return $result;
     }
 
     function readCheckedUpaya($id) {
         global $conn;
 
-        $query = "SELECT *
-            FROM
-            sumber_air_upaya_peningkatan
-            WHERE
-            id_sumber_air =" . $id;
+        $query = 
+"SELECT *
+FROM
+sumber_air_upaya_peningkatan
+WHERE
+id_sumber_air =" . $id;
 
         $eksekusi = mysqli_query($conn, $query);
 
@@ -84,23 +86,25 @@
     }
 
 
-    function readTable($conn, $table){
-        
-        $query = "SELECT * FROM ".$table;
-        $result = mysqli_query($conn, $query);
-
-
-        return $result;
-    };
-
-    function readTableWilayah($table){
+    function readTable($table){
         global $conn;
-        $query = "SELECT * FROM ".$table;
+        
+        $query = 
+        "SELECT * FROM ".$table;
         $result = mysqli_query($conn, $query);
 
 
         return $result;
     };
+
+    // function readTableWilayah($table){
+    //     global $conn;
+    //     $query = "SELECT * FROM ".$table;
+    //     $result = mysqli_query($conn, $query);
+
+
+    //     return $result;
+    // };
     
 
 function addWater($data, $file, $listUpaya){

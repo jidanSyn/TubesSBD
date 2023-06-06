@@ -12,37 +12,37 @@
 
     // echo "<script>alert('$sort' + ' $order' + ' $jenis')</script>";
 
-    $query = "SELECT * FROM sumber_air 
-        -- JOIN wilayah ON sumber_air.id_wilayah = wilayah.id_wilayah
-        JOIN regencies ON sumber_air.id_kabupaten = regencies.id
-        JOIN provinces ON regencies.province_id = provinces.id
-        JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
-        WHERE 
-        ( nama_sumber_air LIKE '%$keyword%'OR
-        kondisi_sumber_air LIKE '%$keyword%'OR
-        suhu LIKE '%$keyword%'OR
-        warna LIKE '%$keyword%'OR
-        pH LIKE '%$keyword%'OR
-        layak_minum LIKE '%$keyword%'OR
-        name LIKE '%$keyword%'OR
-        provinces_name LIKE '%$keyword%'OR
-        nama_jenis_sumber_air LIKE '%$keyword%' ) 
-        ";
-    if($provinsi != '') {
-        $query .= "AND regencies.province_id = '$provinsi' ";
-    }
-    if($regency != '') {
-        $query .= "AND sumber_air.id_kabupaten = '$regency' ";
-    }
+$query = 
+"SELECT * FROM sumber_air 
+JOIN regencies ON sumber_air.id_kabupaten = regencies.id
+JOIN provinces ON regencies.province_id = provinces.id
+JOIN jenis_sumber_air ON sumber_air.id_jenis_sumber_air = jenis_sumber_air.id_jenis_sumber_air
+WHERE 
+( nama_sumber_air LIKE '%$keyword%'OR
+kondisi_sumber_air LIKE '%$keyword%'OR
+suhu LIKE '%$keyword%'OR
+warna LIKE '%$keyword%'OR
+pH LIKE '%$keyword%'OR
+layak_minum LIKE '%$keyword%'OR
+name LIKE '%$keyword%'OR
+provinces_name LIKE '%$keyword%'OR
+nama_jenis_sumber_air LIKE '%$keyword%' ) 
+";
+if($provinsi != '') {
+$query .= "AND regencies.province_id = '$provinsi' ";
+}
+if($regency != '') {
+$query .= "AND sumber_air.id_kabupaten = '$regency' ";
+}
 
-    if($jenis != '') {
-        $query .= "AND sumber_air.id_jenis_sumber_air = '$jenis' ";
-    }
-    if($kondisi != '') {
-        $query .= "AND sumber_air.kondisi_sumber_air = '$kondisi' ";
-    }
+if($jenis != '') {
+$query .= "AND sumber_air.id_jenis_sumber_air = '$jenis' ";
+}
+if($kondisi != '') {
+$query .= "AND sumber_air.kondisi_sumber_air = '$kondisi' ";
+}
     
-    $query .= " ORDER BY $sort $order";
+$query .= " ORDER BY $sort $order";
 
     $listSumberAir = mysqli_query($conn, $query);
 

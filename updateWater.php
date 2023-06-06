@@ -7,11 +7,11 @@
     $listSumberAir = readSumberAir();
     global $conn;
 
-    $r_jenis = readTable($conn, 'jenis_sumber_air');
+    $r_jenis = readTable('jenis_sumber_air');
     // $r_wilayah = readTable('wilayah');
-    $r_provincies = readTableWilayah('provinces');
-    $r_regencies = readTableWilayah('regencies');
-    $r_upaya = readTable($conn, 'upaya_peningkatan_ketersediaan_air');
+    $r_provincies = readTable('provinces');
+    $r_regencies = readTable('regencies');
+    $r_upaya = readTable('upaya_peningkatan_ketersediaan_air');
     // echo '<pre>';
     // print_r($r_jenis);
 

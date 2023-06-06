@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : koneksi01
+Source Server         : coba01
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : db_water
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-06-03 16:20:32
+Date: 2023-06-06 10:26:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,15 +23,14 @@ CREATE TABLE `admins` (
   `username` varchar(50) NOT NULL,
   `password` varchar(300) NOT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of admins
 -- ----------------------------
 INSERT INTO `admins` VALUES ('1', 'jidan', '$argon2i$v=19$m=65536,t=4,p=1$NUdvL2ZkY3pOWERqazZKRQ$FVSZsWGPJwVm4yqQ3JZqWMS5HGAazS2GXpR/Q0laLwA');
 INSERT INTO `admins` VALUES ('2', 'wildan', '$argon2i$v=19$m=65536,t=4,p=1$RWQ1MkJBaXNkL0psSWRVNw$h3Or1UEbeDIfLrtnj2jUiBFb0ng49Zhddk85dxhyEeU');
-INSERT INTO `admins` VALUES ('3', 'danwil', '$argon2i$v=19$m=65536,t=4,p=1$V0ZzOUptL25JbWxUTDZxQg$uX+jjkxMydu8dff43fDa5WicTsWEaEjqyi+xlVOc+y4');
-INSERT INTO `admins` VALUES ('4', 'halo', '$argon2i$v=19$m=65536,t=4,p=1$NmQyVDlqOWsvcUwxcXhnMQ$anW3OiyMCb3f23herUh1owtKGK+4SAMMZZXRb6Q3XeI');
+INSERT INTO `admins` VALUES ('3', 'adrian', '$argon2i$v=19$m=65536,t=4,p=1$NUVMRmFHZmNqU2lXdnExLw$SRu13o30z+Ujcu2DNuDnUBnCIF6u6gHzbyXikqm2pgY');
 INSERT INTO `admins` VALUES ('5', 'shidiq', '$argon2i$v=19$m=65536,t=4,p=1$d2dvZ2ZEb29xQU43MEtuTw$g2OQcyDCM0GIFpRXGZxonGhokc+YMuoufEE27zz4nOM');
 
 -- ----------------------------
